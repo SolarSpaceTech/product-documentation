@@ -1,0 +1,49 @@
+@import '../../../../../../../scss/variables';
+
+:host {
+  display: flex;
+  align-items: start;
+  padding: 1rem;
+
+  line-height: 1.5;
+  font-size: 0.875rem;
+  text-align: left;
+  font-family: monospace;
+  unicode-bidi: isolate;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+
+  color: $contentPrimary;
+  background: $sidebarPurple;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+  border-radius: 0.3em;
+}
+
+.markdown-code__code {
+  width: 600px;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.markdown-code__button {
+  padding: .5rem;
+  margin-left: 1rem;
+
+  color: $contentSecondary;
+  background: $sidebarPurple;
+  border: 1px solid $borderLine;
+  border-radius: .5rem;
+
+  font-weight: 700;
+}
