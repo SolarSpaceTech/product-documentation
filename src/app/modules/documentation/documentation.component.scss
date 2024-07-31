@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+}
+
+.documentation__menu {
+  position: sticky;
+  top: 0;
+  overflow: auto;
+
+  width: 16.5rem;
+  flex-shrink: 0;
+  height: 100vh;
+}
+
+.documentation__title {
+  padding: 1rem 1.5rem;
+
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.documentation__nav {
+  padding: 1rem 1.5rem;
+
+  background-color: #f6f6f6;
+  border-radius: 0 .75rem .75rem 0;
+}
+
+.documentation__content {
+  padding: 0 5rem;
+}

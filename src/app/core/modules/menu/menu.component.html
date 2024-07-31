@@ -1,0 +1,30 @@
+<ul class="menu__list">
+  <li
+    class="menu__item"
+    *ngFor="let menuItem of menu; trackBy: submenuTrackBy"
+  >
+    <ng-container *ngIf="displayingSubmenuSet$ | async as displayingSubmenuSet">
+      <ng-container *ngIf="menuItem.link">
+        <a
+          class="menu__link"
+          [class.menu__link_active]="displayingSubmenuSet.has(menuItem.id)"
+          [href]="'/' + menuItem.link"
+        >{{ menuItem.name }}</a>
+      </ng-container>
+
+      <ng-container *ngIf="!menuItem.link">
+          <button
+            class="menu__submenu-toggle"
+            [class.menu__submenu-toggle_open]="displayingSubmenuSet.has(menuItem.id)"
+            (click)="toggleBlockDisplay(menuItem.id)"
+          >{{ menuItem.name }}</button>
+          <app-menu
+            class="menu__submenu"
+            [class.menu__submenu_open]="displayingSubmenuSet.has(menuItem.id)"
+            [menu]="menuItem.items"
+          ></app-menu>
+      </ng-container>
+
+    </ng-container>
+  </li>
+</ul>
