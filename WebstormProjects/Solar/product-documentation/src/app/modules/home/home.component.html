@@ -1,5 +1,0 @@
-<ul *ngIf="(languages$ | async) as languages">
-  <li *ngFor="let language of languages">
-    <a [href]="language.path">{{ language.attributes.displayName }}</a>
-  </li>
-</ul>
