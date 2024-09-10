@@ -8,7 +8,7 @@ import {
   Tokens,
   defaults, marked,
 } from 'marked';
-import { MarkdownInlineEnum } from 'markdown/enums';
+import { MarkdownBlockEnum, MarkdownCustomEnum, MarkdownInlineEnum, MarkdownOtherEnum } from 'markdown/enums';
 import { MarkdownTokenModel } from 'markdown/models';
 
 @Injectable({
@@ -34,14 +34,14 @@ export class MarkdownParserService {
   private addTargetLinkToParser(): void {
     marked.use({
       extensions: [{
-        name: 'targetLink',
+        name: MarkdownCustomEnum.TargetLink,
         level: 'inline',
         start: (src: string): number => src.match(/^{:target=_blank}/)?.index,
         tokenizer: (src: string): any => {
           const cap = this.TARGET_LINK_RULE.exec(src);
           if (cap) {
             return {
-              type: MarkdownInlineEnum.TargetLink,
+              type: MarkdownCustomEnum.TargetLink,
               raw: cap[0],
               href: cap[2],
               text: cap[1],
@@ -78,87 +78,87 @@ export class MarkdownParserService {
       const token = anyToken as MarkedToken;
 
       switch (token.type) {
-        case 'em': {
+        case MarkdownInlineEnum.Em: {
           out += this.renderer.em(token);
           continue;
         }
-        case 'strong': {
+        case MarkdownInlineEnum.Strong: {
           out += this.renderer.strong(token);
           continue;
         }
-        case 'escape': {
+        case MarkdownOtherEnum.Escape: {
           out += this.renderer.text(token);
           continue;
         }
-        case 'link': {
+        case MarkdownInlineEnum.Link: {
           out += this.renderer.link(token);
           continue;
         }
-        case 'image': {
+        case MarkdownInlineEnum.Image: {
           out += this.renderer.image(token);
           continue;
         }
-        case 'codespan': {
+        case MarkdownInlineEnum.Codespan: {
           out += this.renderer.codespan(token);
           continue;
         }
-        case 'br': {
+        case MarkdownInlineEnum.Br: {
           out += this.renderer.br(token);
           continue;
         }
-        case 'del': {
+        case MarkdownInlineEnum.Del: {
           out += this.renderer.del(token);
           continue;
         }
-        case 'space': {
+        case MarkdownOtherEnum.Space: {
           out += this.renderer.space(token);
           continue;
         }
-        case 'hr': {
+        case MarkdownBlockEnum.Hr: {
           out += this.renderer.hr(token);
           continue;
         }
-        case 'heading': {
+        case MarkdownBlockEnum.Heading: {
           out += this.renderer.heading(token);
           continue;
         }
-        case 'code': {
+        case MarkdownBlockEnum.Code: {
           out += this.renderer.code(token);
           continue;
         }
-        case 'table': {
+        case MarkdownBlockEnum.Table: {
           out += this.renderer.table(token);
           continue;
         }
-        case 'blockquote': {
+        case MarkdownBlockEnum.Blockquote: {
           out += this.renderer.blockquote(token);
           continue;
         }
-        case 'list': {
+        case MarkdownBlockEnum.List: {
           out += this.renderer.list(token);
           continue;
         }
-        case 'html': {
+        case MarkdownOtherEnum.Html: {
           out += this.renderer.html(token);
           continue;
         }
-        case 'paragraph': {
+        case MarkdownBlockEnum.Paragraph: {
           out += this.renderer.paragraph(token);
           continue;
         }
-        case 'text': {
+        case MarkdownOtherEnum.Text: {
           let textToken = token;
           let body = this.renderer.text(textToken);
-          while (i + 1 < tokens.length && tokens[i + 1].type === 'text') {
+          while (i + 1 < tokens.length && tokens[i + 1].type === MarkdownOtherEnum.Text) {
             textToken = tokens[++i] as Tokens.Text | Tokens.Tag;
             body += '\n' + this.renderer.text(textToken);
           }
           if (top) {
             out += this.renderer.paragraph({
-              type: 'paragraph',
+              type: MarkdownBlockEnum.Paragraph,
               raw: body,
               text: body,
-              tokens: [{ type: 'text', raw: body, text: body }],
+              tokens: [{ type: MarkdownOtherEnum.Text, raw: body, text: body }],
             });
           } else {
             out += body;
@@ -202,43 +202,43 @@ export class MarkdownParserService {
       const token = anyToken as MarkedToken;
 
       switch (token.type) {
-        case 'escape': {
+        case MarkdownOtherEnum.Escape: {
           out += renderer.text(token);
           break;
         }
-        case 'html': {
+        case MarkdownOtherEnum.Html: {
           out += renderer.html(token);
           break;
         }
-        case 'link': {
+        case MarkdownInlineEnum.Link: {
           out += renderer.link(token);
           break;
         }
-        case 'image': {
+        case MarkdownInlineEnum.Image: {
           out += renderer.image(token);
           break;
         }
-        case 'strong': {
+        case MarkdownInlineEnum.Strong: {
           out += renderer.strong(token);
           break;
         }
-        case 'em': {
+        case MarkdownInlineEnum.Em: {
           out += renderer.em(token);
           break;
         }
-        case 'codespan': {
+        case MarkdownInlineEnum.Codespan: {
           out += renderer.codespan(token);
           break;
         }
-        case 'br': {
+        case MarkdownInlineEnum.Br: {
           out += renderer.br(token);
           break;
         }
-        case 'del': {
+        case MarkdownInlineEnum.Del: {
           out += renderer.del(token);
           break;
         }
-        case 'text': {
+        case MarkdownOtherEnum.Text: {
           out += renderer.text(token);
           break;
         }
