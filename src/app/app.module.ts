@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from "@angular/common/http";
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
