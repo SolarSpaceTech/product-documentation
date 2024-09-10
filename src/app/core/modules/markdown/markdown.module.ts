@@ -1,20 +1,16 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { MarkdownCreatorDirective } from "./diretives";
-import { MarkdownCanCreatePipe } from "./pipes";
-import { MarkdownParserPipe } from "./pipes/markdown-parser.pipe";
+import { AsyncPipe } from "@angular/common";
 import { MarkdownComponent } from "./markdown.component";
 import { MarkdownComponentCreatorService, MarkdownTransformerService } from "./services";
+import { MarkdownContentComponent } from './components/content';
 
 @NgModule({
   imports: [
-    CommonModule,
+    AsyncPipe,
+    MarkdownContentComponent,
   ],
   declarations: [
     MarkdownComponent,
-    MarkdownCreatorDirective,
-    MarkdownCanCreatePipe,
-    MarkdownParserPipe,
   ],
   providers: [
     MarkdownComponentCreatorService,

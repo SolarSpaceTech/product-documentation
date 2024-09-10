@@ -4,6 +4,7 @@ import { Token } from "marked";
 
 @Directive({
   selector: '[markdownCreator]',
+  standalone: true,
 })
 export class MarkdownCreatorDirective {
   @Input('markdownCreator')

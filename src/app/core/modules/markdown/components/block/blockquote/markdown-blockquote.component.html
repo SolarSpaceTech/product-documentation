@@ -1,0 +1,16 @@
+<div class="markdown-blockquote__icon">
+  @switch (type) {
+    @case (BlockquoteTypeEnum.Info) {
+      <app-icon icon="info" size="24"></app-icon>
+    }
+    @case (BlockquoteTypeEnum.Warning) {
+      <app-icon icon="alert-triangle" size="24"></app-icon>
+    }
+    @case (BlockquoteTypeEnum.Success) {
+      <app-icon icon="success" size="24"></app-icon>
+    }
+  }
+</div>
+
+<app-markdown-content class="markdown-blockquote__content" [tokens]="items"></app-markdown-content>
+

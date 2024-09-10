@@ -21,7 +21,12 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "app/*": ["src/app/*"],
+      "component/*": ["src/app/component/*"],
+      "markdown/*": ["src/app/core/modules/markdown/*"],
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
