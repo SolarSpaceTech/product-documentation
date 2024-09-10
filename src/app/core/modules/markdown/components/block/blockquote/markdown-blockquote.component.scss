@@ -1,0 +1,54 @@
+@import 'styles/mixins';
+
+.markdown-blockquote {
+  @include sc-text-small;
+
+  position: relative;
+  display: flex;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  background: var(--markdown-blockquote-background);
+  overflow: hidden;
+  color: var(--sc-sys-color-on-info);
+
+
+  &[data-sc-type='info'] {
+    --markdown-blockquote-background: var(--sc-sys-color-info);
+  }
+
+  &[data-sc-type='warning'] {
+    --markdown-blockquote-background: var(--sc-sys-color-error);
+  }
+
+  &[data-sc-type='success'] {
+    --markdown-blockquote-background: var(--sc-sys-color-success);
+  }
+
+  .markdown-blockquote__icon {
+    display: flex;
+    margin-right: 0.5rem;
+    text-decoration: none;
+  }
+
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  p:first-child {
+    margin-top: 0;
+  }
+
+  h4 {
+    margin-bottom: 0.5rem;
+
+    @include sc-text-regular;
+  }
+
+  h1:last-child,
+  h2:last-child,
+  h3:last-child,
+  h4:last-child,
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

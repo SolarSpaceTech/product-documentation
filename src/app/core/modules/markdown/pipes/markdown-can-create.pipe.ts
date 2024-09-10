@@ -3,6 +3,7 @@ import { MarkdownComponentCreatorService } from "../services";
 
 @Pipe({
   name: 'markdownCanCreate',
+  standalone: true,
 })
 export class MarkdownCanCreatePipe implements PipeTransform {
   transform(tokenType: string): boolean {

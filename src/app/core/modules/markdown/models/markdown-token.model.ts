@@ -7,4 +7,5 @@ export interface MarkdownTokenModel {
   href?: string;
   tokens?: MarkdownTokenModel[];
   depth?: number;
+  iconType: string;
 }

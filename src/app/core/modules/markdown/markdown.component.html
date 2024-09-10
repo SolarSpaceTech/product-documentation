@@ -1,8 +1,1 @@
-<ng-container *ngFor="let token of tokens$ | async">
-  <ng-container *ngIf="token.type | markdownCanCreate; else placeholder">
-    <ng-template [markdownCreator]="token"></ng-template>
-  </ng-container>
-  <ng-template #placeholder>
-    <div [outerHTML]="[token] | markdownParser"></div>
-  </ng-template>
-</ng-container>
+<app-markdown-content [tokens]="tokens$ | async"></app-markdown-content>
