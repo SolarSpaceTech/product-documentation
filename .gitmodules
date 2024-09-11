@@ -1,0 +1,3 @@
+[submodule "ui-kit"]
+	path = ui-kit
+	url = git@git.p.rtsl.onl:frontend/ui-kit.git
