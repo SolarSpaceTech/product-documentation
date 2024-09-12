@@ -1,9 +1,9 @@
-@import 'styles/variables';
-
 :host {
+  width: 100%;
   display: flex;
   align-items: start;
   padding: 1rem;
+  margin-bottom: 1rem;
 
   line-height: 1.5;
   font-size: 0.875rem;
@@ -15,8 +15,7 @@
   word-break: normal;
   word-wrap: normal;
 
-  color: $contentPrimary;
-  background: $sidebarPurple;
+  background: var(--sc-sys-color-surface-container-highest);
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -27,23 +26,23 @@
   -ms-hyphens: none;
   hyphens: none;
 
-  border-radius: 0.3em;
+  border-radius: 0.25em;
 }
 
 .markdown-code__code {
-  width: 600px;
+  width: 22rem;
   flex-grow: 1;
   overflow: auto;
 }
 
 .markdown-code__button {
-  padding: .5rem;
+  padding: .25rem;
   margin-left: 1rem;
 
-  color: $contentSecondary;
-  background: $sidebarPurple;
-  border: 1px solid $borderLine;
-  border-radius: .5rem;
+  color: var(--sc-sys-color-on-surface);
+  background: var(--sc-sys-color-basic);
+  border: none;
+  border-radius: .25rem;
 
   font-weight: 700;
 }
