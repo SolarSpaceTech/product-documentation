@@ -1,13 +1,16 @@
 import { NgModule } from "@angular/core";
 import { AsyncPipe } from "@angular/common";
 import { MarkdownComponent } from "./markdown.component";
-import { MarkdownComponentCreatorService, MarkdownTransformerService } from "./services";
-import { MarkdownContentComponent } from './components/content';
+import { MarkdownComponentCreatorService, MarkdownRendererService, MarkdownTransformerService } from "./services";
+import { MarkdownContentDirective } from 'markdown/diretives/markdown-content.directive';
+import { MarkdownHtmlElementBuilderService } from 'markdown/services/renderer/markdown-html-element-builder.service';
+import { MarkdownOtherElementBuilderService } from 'markdown/services/renderer/markdown-other-element-builder.service';
+import { MarkdownComponentBuilderService } from 'markdown/services/renderer/markdown-component-builder.service';
 
 @NgModule({
   imports: [
     AsyncPipe,
-    MarkdownContentComponent,
+    MarkdownContentDirective,
   ],
   declarations: [
     MarkdownComponent,
@@ -15,6 +18,10 @@ import { MarkdownContentComponent } from './components/content';
   providers: [
     MarkdownComponentCreatorService,
     MarkdownTransformerService,
+    MarkdownComponentBuilderService,
+    MarkdownHtmlElementBuilderService,
+    MarkdownOtherElementBuilderService,
+    MarkdownRendererService,
   ],
   exports: [
     MarkdownComponent,
