@@ -2,17 +2,17 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   inject,
   Input,
   OnChanges,
-  OnInit,
   Renderer2,
 } from '@angular/core';
 import { Params, RouterLink } from '@angular/router';
 import { DecodeUriComponentPipe } from 'app/pipes';
 import { IconComponent } from 'app/components/icon';
 import { MarkdownTokenModel } from 'markdown/models';
+import { Token } from 'marked';
+import { MarkdownContentDirective } from 'markdown/diretives';
 
 @Component({
   selector: 'app-markdown-link',
@@ -20,28 +20,21 @@ import { MarkdownTokenModel } from 'markdown/models';
   styleUrls: ['./markdown-link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, RouterLink, NgTemplateOutlet, IconComponent, DecodeUriComponentPipe],
+  imports: [NgIf, RouterLink, NgTemplateOutlet, IconComponent, DecodeUriComponentPipe, MarkdownContentDirective],
 })
-export class MarkdownLinkComponent implements OnInit, OnChanges {
+export class MarkdownLinkComponent implements OnChanges {
   @Input()
   public set token(value: MarkdownTokenModel) {
-    this.text = value.text;
+    this.tokens = value.tokens ?? [];
     this.href = value.href;
   };
 
-  public text = ''
-  public href = '';
-
-  protected isInCode: boolean = false;
+  public tokens: Token[];
+  public href = '1';
 
   private link: HTMLAnchorElement | undefined;
 
-  private readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef);
   private readonly renderer: Renderer2 = inject(Renderer2);
-
-  ngOnInit(): void {
-    this.isInCode = this.elementRef.nativeElement.closest('code') !== null;
-  }
 
   ngOnChanges(): void {
     this.link = this.renderer.createElement('a') as HTMLAnchorElement;
