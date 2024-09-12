@@ -1,17 +1,23 @@
 import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  ViewEncapsulation
+} from '@angular/core';
 import { MarkdownTokenModel } from 'markdown/models';
 import { BlockquoteTypeEnum, MarkdownInlineEnum } from 'markdown/enums';
-import { MarkdownContentComponent } from 'markdown/components/content';
 import { IconComponent } from 'app/components/icon';
+import { MarkdownContentDirective } from 'markdown/diretives';
 
 @Component({
-  selector: 'app-markdown-blockquote',
+  selector: 'blockquote.markdown-blockquote',
   templateUrl: './markdown-blockquote.component.html',
   styleUrls: ['./markdown-blockquote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, NgSwitch, NgSwitchCase, MarkdownContentComponent, IconComponent],
+  imports: [NgIf, NgSwitch, NgSwitchCase, IconComponent, MarkdownContentDirective],
   encapsulation: ViewEncapsulation.None,
 })
 export class MarkdownBlockquoteComponent {
@@ -22,8 +28,6 @@ export class MarkdownBlockquoteComponent {
     this.type = this.getType(value?.tokens);
     this.items = this.getItems(value?.tokens);
   }
-
-  @HostBinding('class.markdown-blockquote')
 
   @HostBinding('attr.data-sc-type')
   public type: BlockquoteTypeEnum = BlockquoteTypeEnum.Info;
