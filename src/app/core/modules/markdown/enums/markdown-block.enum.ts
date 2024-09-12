@@ -6,4 +6,5 @@ export enum MarkdownBlockEnum {
   Hr = 'hr',
   Table = 'table',
   List = 'list',
+  ListItem = 'list_item',
 }
