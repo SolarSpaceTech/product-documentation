@@ -11,7 +11,7 @@
 
 // Guides - Header 1
 @mixin sc-heading-1 {
-  @include sc-text(2.5rem, 3rem, 500);
+  @include sc-text(2.5rem, 2.875rem, 500);
 }
 
 // Guides - Header 2
@@ -21,7 +21,7 @@
 
 // Guides - Header 3
 @mixin sc-heading-3 {
-  @include sc-text(1.5rem, 2rem, 400);
+  @include sc-text(1.5rem, 1.875rem, 400);
 }
 
 // Guides - Body L
@@ -32,6 +32,11 @@
 // Guides - Body M Bold
 @mixin sc-heading-5 {
   @include sc-text-regular-bold;
+}
+
+// Guides - Body M Bold
+@mixin sc-heading-6 {
+  @include sc-text-small-bold;
 }
 
 // Guides - Body L
