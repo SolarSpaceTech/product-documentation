@@ -3,34 +3,150 @@ title: test
 displayName: Тестовая страница
 published: true
 ---
-# Некоторая тестовая страница
+# Сервер лицензирования
 
-Добро пожаловать на тестовую страницу документации! Здесь мы объясняем, как использовать, настроить и устранить неполадки в SolarCloud CDN.
+NgDoc is just a library, so first you need to create an Angular application that will be used to display
+documentation, it can be a separate application or an existing one.
 
-CDN - это распределенная сеть доставки контента, которая позволяет вашему веб-сайту загружаться быстрее в браузерах пользователей, независимо от того, насколько они находятся от исходного сервера.
+When you install NgDoc, it will be integrated into the build process of your application, and will generate
+and components based on you code, that can be used in your application to display documentation.
 
-С левой боковой панели вы можете получить подробную документацию о CDN:
+## Описание задачи
 
-- **Начало работы** - создание и интеграция ресурса CDN с вашим веб-сайтом, настройка исходного сайта для избежания конфликтов с CDN
+[Аутентификация](https://confluence.solarsecurity.ru/plugins/servlet/applinks/oauth/login-dance/authorize?applicationLinkID=7e840fef-85d9-37ac-a117-2ba7c03aac37) для
+просмотра подробных данных проблемы
 
-- **Тарификация** - как определяются стоимость услуг, как оплачивать дополнительные функции
+> **INFO**
+> #### Information alert message
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Vivamus imperdiet leo velit, nec consectetur metus auctor at. 
 
-- **Опции ресурса CDN** - настройка различных опций ресурса CDN, таких как кэширование, безопасность, HTTP-заголовки, CORS, оптимизация для доставки больших файлов и изображений
+### Требования к подсистеме
+Примечание:
+- Приоритет задаётся цветом: высокий - красный, средний - желтый, низкий - зеленый
+- Статус: new, rejected, implemented
 
-- **Группа источников** - добавление и настройка группы исходных веб-сайтов, откуда ресурс CDN будет извлекать контент
+### Требования реализации
+Прошедшее демо:
+- Install keyauth server
+- генерировали лицензию средствами KeyAuth через GUI
+- клиент регистрировал свое приложение на сервере с помощью выданной лицензии, СВОЕГО логина/пароля через HTTP API:
+  - при этом на стороне клиента генерировался HWID
+  - сервер  keyauth привязывал лицензию к HWID клиента
+- передавали лицензию клиенту
 
-- **SSL-сертификаты** - добавление вашего SSL-сертификата, выдача бесплатного сертификата Let's Encrypt
+```typescript
+import { Injectable } from '@angular/core';
+import { Token } from 'marked';
+import { MarkdownRendererModel } from 'markdown/models/markdown-renderer.model';
+import { MarkdownHtmlElementBuilderService } from './markdown-html-element-builder.service';
+import { MarkdownOtherElementBuilderService } from './markdown-other-element-builder.service';
+import { MarkdownComponentBuilderService } from './markdown-component-builder.service';
 
-- **Очистка** - очистка кэша ресурса CDN путем указания URL-адреса, регулярного выражения или ресурса CDN, весь кэш которого будет очищен
+@Injectable()
+export class MarkdownRendererService {
+  constructor(
+    private readonly markdownComponentBuilderService: MarkdownComponentBuilderService,
+    private readonly markdownHtmlElementBuilderService: MarkdownHtmlElementBuilderService,
+    private readonly markdownOtherElementBuilderService: MarkdownOtherElementBuilderService,
+  ) {
+  }
 
-- **Предварительная загрузка** - предварительная загрузка контента на серверы CDN
+  public render(params: MarkdownRendererModel): void {
+    params.tokens.forEach((token: Token) => {
+      if (this.markdownComponentBuilderService.has(token.type)) {
+        this.appendComponent(params, token);
+        return;
+      }
 
-- **Журналы** - просмотр и загрузка бесплатных журналов, включение платной опции журналов Row Logs для получения более подробной информации
+      if (this.markdownOtherElementBuilderService.has(token.type)) {
+        this.appendOtherElement(params, token);
+        return;
+      }
 
-- **Отчеты** - статистика, включая объем трафика, коды ответов, процент кэшируемого трафика
+      if (this.markdownHtmlElementBuilderService.has(token.type)) {
+        this.appendHtmlElement(params, token);
+        return;
+      }
+    });
+  }
 
-- **Grafana, Terraform** - плагин Grafana для статистики CDN, создание и настройка ресурсов CDN с помощью плагина Terraform
+  private appendComponent(params: MarkdownRendererModel, token: Token): void {
+    this.markdownComponentBuilderService.createElement(params, token);
+  }
 
-- **Устранение неполадок** - типичные проблемы, которые могут возникнуть при использовании CDN, и как их исправить самостоятельно
+  private appendOtherElement(params: MarkdownRendererModel, token: Token): void {
+    if ('tokens' in token) {
+      this.render({
+        ...params,
+        tokens: token.tokens,
+      });
+    } else {
+      const element = this.markdownOtherElementBuilderService.createElement(params, token);
+      params.renderer.appendChild(params.parentElement, element);
+    }
+  }
 
-Если у вас есть вопросы или если есть тема, связанная с CDN, о которой вы думаете, что нам не хватает, пожалуйста, оставьте комментарий, и наша команды контента рассмотрит его.
+  private appendHtmlElement(params: MarkdownRendererModel, token: Token): void {
+    const element = this.markdownHtmlElementBuilderService.createElement(params, token);
+
+    const tokens = this.getTokens(token);
+    if (tokens?.length) {
+      this.render({
+        ...params,
+        tokens: this.getTokens(token),
+        parentElement: element,
+      });
+    } else if ('text' in token) {
+      this.render({
+        ...params,
+        tokens: [{ ...token, type: 'text'}],
+        parentElement: element,
+      });
+    }
+
+    params.renderer.appendChild(params.parentElement, element);
+  }
+
+  private getTokens(token: Token): Token[] {
+    let tokens = [];
+    if ('tokens' in token) {
+      tokens = token.tokens;
+    } else if ('items' in token) {
+      tokens = token.items;
+    }
+    return tokens;
+  }
+}
+```
+
+```typescript
+export enum MarkdownOtherEnum {
+  Html = 'html',
+  Text = 'text',
+  Space = 'space',
+  Escape = 'escape',
+}
+```
+
+![image](https://placehold.co/800x360 "Some text")
+
+## HLD
+### Архитектура приложения
+Прошедшее демо:
+- Install keyauth server
+- генерировали лицензию средствами KeyAuth через GUI
+- передавали лицензию клиенту
+- клиент регистрировал свое приложение на сервере с помощью выданной лицензии, СВОЕГО логина/пароля через HTTP API:
+    - при этом на стороне клиента генерировался HWID
+    - сервер  keyauth привязывал лицензию к HWID клиента
+
+### Описание клиентской части
+Настроенный сервер KeyAuth практически без изменений:
+- Создано приложение botshield на сервере
+- Преднастроены лицензионные ключи
+
+### Описание серверной части
+First of all you need to add builders from NgDoc library to your application, replace `application` and
+`dev-server` builders for `build` and `serve` targets with alternatives from the NgDoc as shown in the
+example below
