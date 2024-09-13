@@ -1,16 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   HostBinding,
   HostListener,
   Injector,
   Input,
-  Renderer2, SkipSelf,
+  SkipSelf,
   ViewContainerRef
 } from '@angular/core';
 import { Tokens } from 'marked';
-import { ImageViewerComponent } from 'app/components/image-viewer/image-viewer.component';
+import { ImageViewerComponent } from 'app/components/image-viewer';
 
 @Component({
   selector: 'img.markdown-image',
@@ -42,8 +41,6 @@ export class MarkdownImageComponent {
   public alt: string = '';
 
   constructor(
-    private readonly elementRef: ElementRef,
-    private readonly renderer: Renderer2,
     @SkipSelf() private readonly viewContainerRef: ViewContainerRef,
     private readonly injector: Injector,
   ) {}
