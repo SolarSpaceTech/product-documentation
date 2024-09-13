@@ -1,0 +1,35 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: block;
+  width: 100vw;
+  height: 100vh;
+
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background-color: #0000008f;
+  cursor: zoom-out;
+  overflow: scroll;
+  overscroll-behavior-y: contain;
+}
+
+.markdown-image-viewer {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 3rem;
+  box-sizing: border-box;
+
+  border-radius: 0.25rem;
+}
+
+.markdown-image-viewer__image {
+  width: 100%;
+}
+
