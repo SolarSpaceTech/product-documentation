@@ -6,6 +6,7 @@ import {
   MarkdownBlockquoteComponent,
   MarkdownCodeComponent,
   MarkdownHtmlComponent,
+  MarkdownImageComponent,
   MarkdownLinkComponent,
   MarkdownTableComponent
 } from 'markdown/components';
@@ -17,6 +18,7 @@ export class MarkdownComponentBuilderService {
     [MarkdownBlockEnum.Code]: MarkdownCodeComponent,
     [MarkdownBlockEnum.Table]: MarkdownTableComponent,
     [MarkdownInlineEnum.Link]: MarkdownLinkComponent,
+    [MarkdownInlineEnum.Image]: MarkdownImageComponent,
     [MarkdownOtherEnum.Html]: MarkdownHtmlComponent,
   };
 
