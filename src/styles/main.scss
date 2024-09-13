@@ -1,9 +1,10 @@
 @import './variables';
 @import './code';
 @import './sc.sys.colors';
+@import "../assets/fonts/index";
 
 html {
-  font-family: Inter, sans-serif;
+  font-family: ONY One Beta, monospace;
   color: $contentPrimary;
   font-size: 16px;
 }
@@ -14,6 +15,6 @@ body {
 }
 
 * {
-  font-family: Inter, sans-serif;
+  font-family: ONY One Beta, monospace;
   box-sizing: border-box;
 }

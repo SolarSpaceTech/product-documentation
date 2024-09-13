@@ -1,0 +1,41 @@
+$ony-version: "1.0.0";
+
+@font-face {
+  font-family: "ONY One Beta";
+  src:
+    url("ONYOneBeta-Light.woff2?v=#{$ony-version}") format("woff2"),
+    url("ONYOneBeta-Light.woff?v=#{$ony-version}") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ONY One Beta";
+  src:
+    url("ONYOneBeta-Regular.woff2?v=#{$ony-version}") format("woff2"),
+    url("ONYOneBeta-Regular.woff?v=#{$ony-version}") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ONY One Beta";
+  src:
+    url("ONYOneBeta-Medium.woff2?v=#{$ony-version}") format("woff2"),
+    url("ONYOneBeta-Medium.woff?v=#{$ony-version}") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ONY One Beta";
+  src:
+    url("ONYOneBeta-Thin.woff2?v=#{$ony-version}") format("woff2"),
+    url("ONYOneBeta-Thin.woff?v=#{$ony-version}") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
