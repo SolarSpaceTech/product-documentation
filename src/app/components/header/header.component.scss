@@ -1,0 +1,18 @@
+.header {
+  height: 72px;
+  background: #2b323a;
+  padding: 0.75rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__search {
+    width: 22rem;
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 2rem;
+    color: white;
+  }
+}

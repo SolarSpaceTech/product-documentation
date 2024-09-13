@@ -1,0 +1,29 @@
+<header class="header" *ngIf="isBrowserOnly">
+  <sc-input class="header__search" autocomplete="off" [label]="'Label'" [debounce]="true" [prefixSeparatorHidden]="true"
+    [suffixSeparatorHidden]="true" noShowError>
+    <sc-decorator-prefix>
+      <sc-icon icon="search"></sc-icon>
+    </sc-decorator-prefix>
+  </sc-input>
+
+  <div class="header__navigation">
+    <div class="header__navigation-element">
+      Как начать
+    </div>
+    <div class="header__navigation-element">
+      Статьи
+    </div>
+    <div class="header__navigation-element">
+      Вопросы
+    </div>
+    <div class="header__navigation-element">
+      Поддержка
+    </div>
+  </div>
+
+  <div class="header__actions">
+    <sc-checkbox switch [formControl]="themeControl">
+      Темная тема
+    </sc-checkbox>
+  </div>
+</header>

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RequestWaiterInterceptor } from "./interceptors";
 import { LanguageComponent } from './components/language/language.component';
 import { ContentModule } from './core/modules/content';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ContentModule } from './core/modules/content';
     BrowserModule,
     AppRoutingModule,
     ContentModule,
+    HeaderComponent
   ],
   providers: [
     provideHttpClient(withFetch()),
