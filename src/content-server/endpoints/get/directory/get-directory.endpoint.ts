@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { readFileSync } from "node:fs";
 import frontMatter from "front-matter";
 import { glob } from 'fast-glob';
-import { ContentItemModel } from '../../../../models';
+import { ContentAttributesModel, ContentItemModel } from '../../../../models';
 
 export const getDirectoryEndpoint = async (req: any, res: any) => {
   try {
@@ -23,7 +23,7 @@ export const getDirectoryEndpoint = async (req: any, res: any) => {
     const contentList = dirPaths.reduce((result: ContentItemModel[], dirPath: string) => {
       const content = getContent(dirPath);
       if (content) {
-        const raw = frontMatter(content);
+        const raw = frontMatter<ContentAttributesModel>(content);
         result.push({
           attributes: raw.attributes,
           path: dirPath.replace(`${contentPath}/`, '').split('.')[0],

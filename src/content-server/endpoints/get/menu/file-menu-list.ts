@@ -1,13 +1,12 @@
-import { MenuItemModel } from "../../../../models";
+import { ContentItemModel, MenuItemModel } from "../../../../models";
 import { MenuMapRecordModel } from "../../../../app/core/modules/menu/models";
 import { join } from "node:path";
-import { FileContentModel } from "./file-content.model";
 
 export class FileMenuList {
   constructor(
     private readonly parentDirPath: string,
     private readonly subDirPath: string,
-    private readonly fileContentMap: Map<string, FileContentModel>,
+    private readonly fileContentMap: Map<string, ContentItemModel>,
   ) {}
 
   public prepare(contentPaths: string[]): MenuItemModel[] {
