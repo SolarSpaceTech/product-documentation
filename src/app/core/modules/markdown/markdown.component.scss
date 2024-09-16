@@ -60,44 +60,46 @@ ol ul {
 
 h1 {
   @include sc-heading-1;
-  margin: 2rem 0 0.5rem 0;
+  margin: 1rem 0;
 }
 
 h2 {
   @include sc-heading-2;
-  margin: 2rem 0 0.5rem 0;
+  margin: 1rem 0;
 }
 
 h3 {
   @include sc-heading-3;
-  margin: 2rem 0 0.5rem 0;
+  margin: 1rem 0;
 }
 
 h4 {
   @include sc-heading-4;
-  margin: 2rem 0 0.5rem 0;
+  margin: 1rem 0;
 }
 
 h5 {
   @include sc-heading-5;
-  margin: 2rem 0 0.5rem 0;
+  margin: 1rem 0;
 }
 
 h6 {
   @include sc-heading-6;
-  margin: 2rem 0 0.5rem 0;
+  margin: 1rem 0;
 }
 
 p {
   font-size: 1rem;
   line-height: 1.5rem;
+  margin: 1rem 0;
 }
 
 table {
-  border-collapse: collapse;
   width: 100%;
-  display: block;
   overflow-x: auto;
+  margin: 1rem 0;
+  border-radius: 0.25rem;
+  border-spacing: 0;
 
   @media (max-width: 800px) {
     max-width: 78rem;
@@ -113,8 +115,18 @@ table {
       line-height: 1.5rem;
       color: var(--sc-sys-color-on-surface);
       padding: 0.5rem;
-      background: $sidebarPurple;
-      border: 1px solid $borderNormal;
+      background: var(--sc-sys-color-surface-container);
+      border: 1px solid var(--sc-sys-color-outline-variant);
+      border-left: transparent;
+
+      &:first-of-type {
+        border-left: 1px solid var(--sc-sys-color-outline-variant);
+        border-top-left-radius: 0.25rem;
+      }
+
+      &:last-of-type {
+        border-top-right-radius: 0.25rem;
+      }
     }
 
     td {
@@ -123,8 +135,16 @@ table {
       font-size: 1rem;
       line-height: 1.5rem;
       color: var(--sc-sys-color-on-surface);
+      background: var(--sc-sys-color-surface-container-highest);
       padding: 0.5rem;
-      border: 1px solid $borderNormal;
+
+      border: 1px solid var(--sc-sys-color-outline-variant);
+      border-top: transparent;
+      border-left: transparent;
+
+      &:first-of-type {
+        border-left: 1px solid var(--sc-sys-color-outline-variant);
+      }
 
       ul,
       ol {
@@ -132,6 +152,16 @@ table {
           list-style-position: inside;
         }
       }
+    }
+  }
+
+  tbody tr:last-of-type td {
+    &:first-of-type {
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    &:last-of-type {
+      border-bottom-right-radius: 0.25rem;
     }
   }
 }

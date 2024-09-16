@@ -5,13 +5,14 @@
 
 html {
   font-family: ONY One Beta, monospace;
-  color: $contentPrimary;
   font-size: 16px;
 }
 
 body {
   margin: 0;
   font-size: 0.875rem;
+  color: var(--sc-sys-color-on-surface);
+  background-color: var(--sc-sys-color-surface);
 }
 
 * {

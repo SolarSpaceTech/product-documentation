@@ -22,10 +22,12 @@
 .documentation__nav {
   padding: 1rem 1.5rem;
 
-  background-color: #f6f6f6;
   border-radius: 0 .75rem .75rem 0;
 }
 
 .documentation__content {
+  flex-grow: 1;
   padding: 0 5rem;
+
+  background-color: var(--sc-sys-color-surface-container);
 }
