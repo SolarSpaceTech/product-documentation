@@ -7,9 +7,6 @@ ol {
   padding-left: 1.5rem;
 
   li {
-    font-size: 1rem;
-    line-height: 1.5rem;
-
     &:has(> input) {
       list-style-type: none;
     }
@@ -31,6 +28,7 @@ ol {
 ul {
   list-style-type: disc;
   margin-bottom: 1rem;
+  @include sc-text-regular;
 }
 
 ul ul {
@@ -89,8 +87,7 @@ h6 {
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.5rem;
+  @include sc-text-regular;
   margin: 1rem 0;
 }
 
@@ -106,18 +103,14 @@ table {
   }
 
   tr {
-    border-radius: 3px;
-
     th {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.5rem;
       color: var(--sc-sys-color-on-surface);
       padding: 0.5rem;
       background: var(--sc-sys-color-surface-container);
       border: 1px solid var(--sc-sys-color-outline-variant);
       border-left: transparent;
+
+      @include sc-text-regular-bold;
 
       &:first-of-type {
         border-left: 1px solid var(--sc-sys-color-outline-variant);
@@ -130,9 +123,6 @@ table {
     }
 
     td {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 1rem;
       line-height: 1.5rem;
       color: var(--sc-sys-color-on-surface);
       background: var(--sc-sys-color-surface-container-highest);
@@ -141,6 +131,8 @@ table {
       border: 1px solid var(--sc-sys-color-outline-variant);
       border-top: transparent;
       border-left: transparent;
+
+      @include sc-text-small;
 
       &:first-of-type {
         border-left: 1px solid var(--sc-sys-color-outline-variant);

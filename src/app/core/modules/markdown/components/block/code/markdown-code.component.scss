@@ -1,14 +1,17 @@
+@import "styles/mixins";
+
 :host {
+  position: relative;
   width: 100%;
+  overflow: scroll;
   display: flex;
   align-items: start;
-  padding: 1rem;
   margin-bottom: 1rem;
 
   line-height: 1.5;
   font-size: 0.875rem;
   text-align: left;
-  font-family: monospace;
+  font-family: Roboto Mono, monospace;
   unicode-bidi: isolate;
   white-space: pre;
   word-spacing: normal;
@@ -27,16 +30,34 @@
   hyphens: none;
 
   border-radius: 0.25em;
+
+  @include sc-text-code;
+
 }
 
 .markdown-code__code {
   width: 22rem;
+  padding: 1rem;
+  max-height: 24rem;
   flex-grow: 1;
   overflow: auto;
+
+  font-family: Roboto Mono, monospace;
+}
+
+.markdown-code__button-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  background: linear-gradient(90deg, transparent 0%, var(--sc-sys-color-surface-container-highest) 100%);
+
+  max-height: 26rem;
 }
 
 .markdown-code__button {
-  padding: .25rem;
+  padding: 0.25rem;
   margin-left: 1rem;
 
   color: var(--sc-sys-color-on-surface);

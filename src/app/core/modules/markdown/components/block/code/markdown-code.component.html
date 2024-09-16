@@ -1,7 +1,9 @@
 <code class="markdown-code__code">{{token.text}}</code>
-<button
-  class="markdown-code__button"
-  (click)="copyToClipboard(token.text)"
->
-  <app-icon icon="copy" size="24"></app-icon>
-</button>
+<div class="markdown-code__button-wrapper">
+  <button
+    class="markdown-code__button"
+    (click)="copyToClipboard(token.text)"
+  >
+    <app-icon icon="copy" size="24"></app-icon>
+  </button>
+</div>

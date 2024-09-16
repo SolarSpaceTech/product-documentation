@@ -1,8 +1,5 @@
 @if (isExternalLink) {
-  <a class="markdown-link" [href]="path" target="_blank">
-    <span [markdownContent]="tokens"></span>
-    <app-icon icon="external-link"></app-icon>
-  </a>
+  <a class="markdown-link" [href]="path" target="_blank" [markdownContent]="tokens"></a>
 } @else {
   <a
     [routerLink]="path"
