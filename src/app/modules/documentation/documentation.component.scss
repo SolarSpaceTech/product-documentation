@@ -9,7 +9,7 @@
   padding-top: 1.5rem;
   width: 18.75rem;
   flex-shrink: 0;
-  height: 100vh;
+  height: 100%;
   color: var(--sc-sys-color-on-primary);
 }
 
@@ -20,6 +20,7 @@
 }
 
 .documentation__content {
+  height: 100%;
   padding: 0 5rem;
   background: var(--sc-sys-color-surface-container);
 }
