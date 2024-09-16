@@ -13,25 +13,27 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
+    "lib": ["ES2022", "dom"],
+    "types": ["node"],
     "paths": {
       "app/*": ["src/app/*"],
       "component/*": ["src/app/component/*"],
       "markdown/*": ["src/app/core/modules/markdown/*"],
+      "@ui-kit": ["./ui-kit/lib/"],
+      "@ui-kit/*": ["./ui-kit/lib/*"]
     }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-  }
+    "strictInputAccessModifiers": true
+  },
+  "files": ["src/main.ts", "src/main.server.ts", "ssr-server.ts"],
+  "include": ["src/**/*.d.ts", "src/**/*.ts"]
 }

@@ -103,6 +103,18 @@ table {
   }
 
   tr {
+    .left {
+      text-align: left;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .right {
+      text-align: right;
+    }
+
     th {
       color: var(--sc-sys-color-on-surface);
       padding: 0.5rem;
