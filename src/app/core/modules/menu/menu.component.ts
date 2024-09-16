@@ -22,20 +22,6 @@ export class MenuComponent {
 
   public menu = input<MenuItemModel[]>([]);
 
-  public addLevelToMenuItems = (
-    menuItems: MenuItemModel[],
-    level: number = 0,
-  ): MenuItemModel[] =>
-    menuItems.map((item) => ({
-      ...item,
-      level,
-      items: item.items
-        ? this.addLevelToMenuItems(item.items, level + 1)
-        : undefined,
-    }));
-
-  public structuredMenu = computed(() => this.addLevelToMenuItems(this.menu()));
-
   constructor(private readonly menuStateService: MenuStateService) {}
 
   public toggleBlockDisplay(id: string): void {

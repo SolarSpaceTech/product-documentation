@@ -3,5 +3,4 @@ export interface MenuItemModel {
   name: string;
   items?: MenuItemModel[];
   link?: string;
-  level?: number;
 }
