@@ -10,6 +10,7 @@
   background: var(--markdown-blockquote-background);
   overflow: hidden;
   color: var(--sc-sys-color-on-info);
+  border: none;
 
   &[data-sc-type="info"] {
     --markdown-blockquote-background: var(--sc-sys-color-info);

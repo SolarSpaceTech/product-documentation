@@ -6,7 +6,7 @@ import { MarkdownContentComponent } from 'markdown/components/content';
 import { IconComponent } from 'app/components/icon';
 
 @Component({
-  selector: 'app-markdown-blockquote',
+  selector: 'blockquote.markdown-blockquote',
   templateUrl: './markdown-blockquote.component.html',
   styleUrls: ['./markdown-blockquote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
