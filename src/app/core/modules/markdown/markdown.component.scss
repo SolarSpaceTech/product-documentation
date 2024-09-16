@@ -157,3 +157,10 @@ table {
     }
   }
 }
+
+.code-inline {
+  padding: 2px 8px;
+  color: var(--sc-sys-color-on-surface);
+  background-color: var(--sc-sys-color-surface-container-highest);
+  border-radius: 0.25rem;
+}

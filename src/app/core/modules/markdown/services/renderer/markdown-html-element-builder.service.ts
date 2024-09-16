@@ -52,7 +52,9 @@ export class MarkdownHtmlElementBuilderService {
   }
 
   private createCodeSpanElement({ renderer }: MarkdownRendererModel): HTMLElement {
-    return renderer.createElement('code');
+    const element = renderer.createElement('code');
+    renderer.addClass(element, 'code-inline');
+    return element;
   }
 
   private createBrElement({ renderer }: MarkdownRendererModel): HTMLElement {
