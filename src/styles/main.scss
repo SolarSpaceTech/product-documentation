@@ -1,19 +1,21 @@
-@import "./variables";
-@import "./code";
+@import './variables';
+@import './code';
 @import "../../ui-kit/styles/sc-foundation.scss";
+@import "../assets/fonts/index";
 
 html {
-  font-family: Inter, sans-serif;
-  color: $contentPrimary;
+  font-family: ONY One Beta, monospace;
   font-size: 16px;
 }
 
 body {
   margin: 0;
   font-size: 0.875rem;
+  color: var(--sc-sys-color-on-surface);
+  background-color: var(--sc-sys-color-surface);
 }
 
 * {
-  font-family: Inter, sans-serif;
+  font-family: ONY One Beta, monospace;
   box-sizing: border-box;
 }

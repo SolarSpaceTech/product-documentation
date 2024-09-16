@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'styles/mixins';
 
 .markdown-blockquote {
   @include sc-text-small;
@@ -8,18 +8,18 @@
   padding: 0.75rem;
   border-radius: 0.25rem;
   background: var(--markdown-blockquote-background);
-  overflow: hidden;
   color: var(--sc-sys-color-on-info);
+  margin: 0 0 1rem 0;
 
-  &[data-sc-type="info"] {
+  &[data-sc-type='info'] {
     --markdown-blockquote-background: var(--sc-sys-color-info);
   }
 
-  &[data-sc-type="warning"] {
+  &[data-sc-type='warning'] {
     --markdown-blockquote-background: var(--sc-sys-color-error);
   }
 
-  &[data-sc-type="success"] {
+  &[data-sc-type='success'] {
     --markdown-blockquote-background: var(--sc-sys-color-success);
   }
 
@@ -40,7 +40,7 @@
   h4 {
     margin-bottom: 0.5rem;
 
-    @include sc-text-regular;
+    @include sc-heading-4;
   }
 
   h1:last-child,

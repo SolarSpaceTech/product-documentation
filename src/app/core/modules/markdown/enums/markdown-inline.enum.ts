@@ -4,7 +4,6 @@ export enum MarkdownInlineEnum {
   Strong = 'strong',
   Image = 'image',
   Codespan = 'codespan',
-  Text = 'text',
   Br = 'br',
   Del = 'del',
 }

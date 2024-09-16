@@ -1,0 +1,21 @@
+@if (header) {
+  <thead>
+    <tr>
+      @for (cell of header; track cell) {
+        <th [class]="cell.align ?? 'center'" [markdownContent]="cell.tokens"></th>
+      }
+    </tr>
+  </thead>
+}
+
+@if (rows) {
+  <tbody>
+    @for (row of rows; track row) {
+      <tr>
+        @for (cell of row; track cell) {
+          <td [class]="cell.align ?? 'center'" [markdownContent]="cell.tokens"></td>
+        }
+      </tr>
+    }
+  </tbody>
+}
