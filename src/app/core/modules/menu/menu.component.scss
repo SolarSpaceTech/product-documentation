@@ -58,43 +58,6 @@
     sc-icon.rotate-180 {
       transform: rotate(360deg) !important;
     }
-
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   top: 50%;
-    //   right: 0;
-
-    //   width: 20px;
-    //   height: 20px;
-
-    //   color: var(--sc-sys-color-on-primary);
-    //   border-radius: 50%;
-
-    //   transform: translateY(-50%);
-    // }
-
-    // &::after {
-    //   content: "2";
-    //   position: absolute;
-    //   top: 50%;
-    //   right: 3px;
-
-    //   display: block;
-    //   width: 0.45rem;
-    //   height: 0.45rem;
-    //   box-sizing: border-box;
-
-    //   color: var(--sc-sys-color-on-primary);
-    //   border-bottom-right-radius: 2px;
-
-    //   transform: translate(-50%, -50%) rotate(-45deg);
-    //   transition-duration: 300ms;
-    // }
-
-    // &_open::after {
-    //   transform: translate(-50%, -50%) rotate(45deg);
-    // }
   }
 
   &__submenu {
