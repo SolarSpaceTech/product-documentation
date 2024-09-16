@@ -1,133 +1,135 @@
-@import 'styles/variables';
+@import "styles/variables";
 
-ul,
-ol {
-  margin: 0;
-  padding-left: 1.5rem;
+:host {
+  ul,
+  ol {
+    margin: 0;
+    padding-left: 1.5rem;
 
-  li {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    li {
+      font-size: 1rem;
+      line-height: 1.5rem;
 
-    &:has(> input) {
-      list-style-type: none;
-    }
+      &:has(> input) {
+        list-style-type: none;
+      }
 
-    ul,
-    ol {
-      padding-left: 1.5rem;
+      ul,
+      ol {
+        padding-left: 1.5rem;
 
-      li {
-        ul,
-        ol {
-          padding-left: 1.5rem;
+        li {
+          ul,
+          ol {
+            padding-left: 1.5rem;
+          }
         }
       }
     }
   }
-}
 
-h1 {
-  font-size: 2rem;
-  line-height: 2.5rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-h3 {
-  font-size: 1.25rem;
-  line-height: 1.6rem;
-}
-
-h4 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-h4 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-h5 {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-h6 {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-}
-
-p {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-a {
-  color: $secondaryContrastFocus;
-}
-
-blockquote {
-  padding: 1px 1rem;
-  color: $contentSecondary;
-  border-left: 0.25em solid $borderLine;
-  margin-left: 0;
-  background: $lightGreyBG;
-  display: block;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  display: block;
-  overflow-x: auto;
-
-  @media (max-width: 800px) {
-    max-width: 78rem;
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 
-  tr {
-    border-radius: 3px;
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 
-    th {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      text-align: center;
-      color: $contentPrimary;
-      padding: 0.5rem;
-      background: $sidebarPurple;
-      border: 1px solid $borderNormal;
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  h5 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  h6 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  a {
+    color: $secondaryContrastFocus;
+  }
+
+  blockquote {
+    padding: 1px 1rem;
+    color: $contentSecondary;
+    border-left: 0.25em solid $borderLine;
+    margin-left: 0;
+    background: $lightGreyBG;
+    display: block;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+
+    @media (max-width: 800px) {
+      max-width: 78rem;
     }
 
-    td {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      text-align: center;
-      color: $contentPrimary;
-      padding: 0.5rem;
-      border: 1px solid $borderNormal;
+    tr {
+      border-radius: 3px;
 
-      ul,
-      ol {
-        li {
-          list-style-position: inside;
+      th {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        text-align: center;
+        color: $contentPrimary;
+        padding: 0.5rem;
+        background: $sidebarPurple;
+        border: 1px solid $borderNormal;
+      }
+
+      td {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        text-align: center;
+        color: $contentPrimary;
+        padding: 0.5rem;
+        border: 1px solid $borderNormal;
+
+        ul,
+        ol {
+          li {
+            list-style-position: inside;
+          }
         }
       }
     }
