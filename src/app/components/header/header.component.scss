@@ -8,6 +8,8 @@
 
   &__search {
     width: 22rem;
+    // todo: обёртка для открытия search модалки
+    pointer-events: none;
   }
 
   &__navigation {

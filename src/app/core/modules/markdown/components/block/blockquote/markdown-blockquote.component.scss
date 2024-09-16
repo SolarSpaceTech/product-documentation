@@ -1,4 +1,4 @@
-@import 'styles/mixins';
+@import "mixins";
 
 .markdown-blockquote {
   @include sc-text-small;
@@ -11,16 +11,15 @@
   overflow: hidden;
   color: var(--sc-sys-color-on-info);
 
-
-  &[data-sc-type='info'] {
+  &[data-sc-type="info"] {
     --markdown-blockquote-background: var(--sc-sys-color-info);
   }
 
-  &[data-sc-type='warning'] {
+  &[data-sc-type="warning"] {
     --markdown-blockquote-background: var(--sc-sys-color-error);
   }
 
-  &[data-sc-type='success'] {
+  &[data-sc-type="success"] {
     --markdown-blockquote-background: var(--sc-sys-color-success);
   }
 
