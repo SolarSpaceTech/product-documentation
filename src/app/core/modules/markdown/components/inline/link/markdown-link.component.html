@@ -1,12 +1,10 @@
-<a
-  [routerLink]="path"
-  [fragment]="fragment ? (fragment | decodeUriComponent) : undefined"
-  [queryParams]="queryParams"
-  *ngIf="!isExternalLink">
-  {{ text }}
-</a>
-
-<a [href]="path" *ngIf="isExternalLink" target="_blank">
-  {{ text }}
-  <app-icon icon="external-link" *ngIf="!isInCode"></app-icon>
-</a>
+@if (isExternalLink) {
+  <a class="markdown-link" [href]="path" target="_blank" [markdownContent]="tokens"></a>
+} @else {
+  <a
+    [routerLink]="path"
+    [fragment]="fragment ? (fragment | decodeUriComponent) : undefined"
+    [queryParams]="queryParams"
+    [markdownContent]="tokens">
+  </a>
+}

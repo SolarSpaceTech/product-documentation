@@ -1,6 +1,5 @@
 import { FileMenuList } from "./file-menu-list";
-import { FileContentModel } from "./file-content.model";
-import { MenuItemModel } from "../../../../models";
+import { ContentAttributesModel, ContentItemModel, MenuItemModel } from "../../../../models";
 import process from 'process';
 import { join } from 'node:path';
 import { glob } from 'fast-glob';
@@ -17,9 +16,9 @@ export const getMenuEndpoint = async (req: any, res: any) => {
   });
 
   const contentItems = await Promise.all(
-    contentPaths.map((contentPath: string) => new Promise((resolve, reject) => {
+    contentPaths.map((contentPath: string) => new Promise<ContentItemModel>((resolve, reject) => {
       readFile(contentPath, 'utf8', (error, content: string) => {
-        const raw = frontMatter(content);
+        const raw = frontMatter<ContentAttributesModel>(content);
         resolve({
           attributes: raw.attributes,
           content: raw.body,
@@ -29,10 +28,11 @@ export const getMenuEndpoint = async (req: any, res: any) => {
     }))
   );
 
-  const fileContentMap = (contentItems as [] ?? []).reduce((contentItemMap: Map<string, FileContentModel>, { path, attributes, content }) => {
+  const fileContentMap = (contentItems ?? []).reduce((contentItemMap: Map<string, ContentItemModel>, { path, attributes, content }) => {
     return contentItemMap.set(path, {
       attributes: attributes,
-      content: content
+      content: content,
+      path: path,
     });
   }, new Map());
 

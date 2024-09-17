@@ -1,3 +1,13 @@
-:host {
-	white-space: nowrap;
+@import "styles/mixins";
+
+.markdown-link {
+  white-space: nowrap;
+  color: var(--sc-sys-color-primary-on-surface);
+  text-decoration-line: none;
+
+  @include sc-text-regular;
+
+  &__icon {
+    margin-left: 0.25rem;
+  }
 }
