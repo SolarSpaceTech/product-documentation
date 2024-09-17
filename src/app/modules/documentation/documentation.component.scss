@@ -3,28 +3,30 @@
   grid-template-columns: 18.75rem 1fr 18.75rem;
 }
 
-.documentation__menu {
-  overflow: visible;
-  padding-top: 1.5rem;
-  flex-shrink: 0;
-  height: 100%;
-  color: var(--sc-sys-color-on-primary);
-}
+.documentation {
+  &__menu {
+    overflow: visible;
+    padding-top: 1.5rem;
+    flex-shrink: 0;
+    height: 100%;
+    color: var(--sc-sys-color-on-primary);
+  }
 
-.documentation__title {
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-}
+  &__title {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
 
-.documentation__content {
-  height: 100%;
-  padding: 0 1.25rem;
-  background: var(--sc-sys-color-surface-container);
-}
+  &__content {
+    height: 100%;
+    padding: 1.25rem;
+    background: var(--sc-sys-color-surface-container);
+  }
 
-.documentation__nav {
-  position: sticky;
-  top: 6rem;
-  overflow: visible;
+  &__nav {
+    position: sticky;
+    top: 6rem;
+    overflow: visible;
+  }
 }

@@ -30,11 +30,5 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  constructor(@Inject(PLATFORM_ID) private platformId: string) {}
-
-  get isBrowserOnly(): boolean {
-    return isPlatformBrowser(this.platformId);
-  }
-
   protected themeControl = new FormControl<boolean>(true);
 }
