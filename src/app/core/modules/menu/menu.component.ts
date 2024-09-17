@@ -22,10 +22,12 @@ export class MenuComponent {
     this.menuStateService.displayingSubmenuSet;
 
   public displayingSubmenuSetDEBUG: any = computed(() => ({
-    ...this.menuStateService.displayingSubmenuSet()
+    ...this.menuStateService.displayingSubmenuSet(),
   }));
 
   public menu = input<MenuItemModel[]>([]);
+  public level = input(0);
+  public nextLevel = computed(() => this.level() + 1);
 
   constructor(private readonly menuStateService: MenuStateService) {}
 

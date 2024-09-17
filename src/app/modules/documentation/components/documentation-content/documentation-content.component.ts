@@ -41,8 +41,6 @@ export class DocumentationContentComponent implements OnInit {
           ];
         }),
         tap((path: string[]) => {
-          console.log(path, 'path');
-
           this.menuStateService.initMenuState(path);
         }),
         takeUntilDestroyed(this.destroyRef),

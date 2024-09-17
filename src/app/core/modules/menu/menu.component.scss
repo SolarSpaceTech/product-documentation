@@ -24,24 +24,36 @@
     background: none;
     border: none;
     padding: 0.5rem 1rem;
+
+    @for $i from 1 through 5 {
+      &--level-#{$i} {
+        padding: 0.5rem #{if($i < 4, $i + 1, 4)}rem;
+      }
+    }
   }
 
   &__link {
-    padding-left: 2.75rem;
     display: flex;
     align-items: center;
     gap: 10px;
-  }
 
-  &__link-dot {
-    display: inline-block;
-    width: 0.25rem;
-    height: 0.25rem;
-    background: var(--sc-sys-color-on-primary);
-    border-radius: 4px;
+    &-dot-wrapper {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+    }
 
-    &--active {
-      background: var(--sc-sys-color-primary-on-surface);;
+    &-dot {
+      display: inline-block;
+      width: 0.25rem;
+      height: 0.25rem;
+      background: var(--sc-sys-color-on-primary);
+      border-radius: 4px;
+
+      &--active {
+        background: var(--sc-sys-color-primary-on-surface);
+      }
     }
   }
 

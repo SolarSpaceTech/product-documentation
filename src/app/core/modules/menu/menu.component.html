@@ -3,14 +3,17 @@
   <li class="menu__item">
     @if (displayingSubmenuSet()) {
       @if (menuItem.link) {
-        <a class="menu__link" [href]="'/' + menuItem.link">
-          <div class="menu__link-dot" [class.menu__link-dot--active]="displayingSubmenuSet().has(menuItem.id)" ></div>
+        <a class="menu__link" [ngClass]="['menu__link--level-' + level()]" [href]="'/' + menuItem.link">
+          <div class="menu__link-dot-wrapper">
+            <div class="menu__link-dot" [class.menu__link-dot--active]="displayingSubmenuSet().has(menuItem.id)" ></div>
+          </div>
           <span>
           {{ menuItem.name }}</span>
         </a>
       } @else {
         <button
         class="menu__submenu-toggle"
+        [ngClass]="['menu__submenu-toggle--level-' + level()]"
         [class.menu__submenu-toggle_open]="displayingSubmenuSet().has(menuItem.id)"
         (click)="toggleBlockDisplay(menuItem.id)"
         >
@@ -21,6 +24,7 @@
           class="menu__submenu"
           [class.menu__submenu_open]="displayingSubmenuSet().has(menuItem.id)"
           [menu]="menuItem.items"
+          [level]="nextLevel()"
         ></app-menu>
       }
     }
