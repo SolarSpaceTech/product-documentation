@@ -58,33 +58,39 @@ export class FileMenuList {
   }
 
   private getMenuItems(menuMap: MenuMapRecordModel, path: string = ''): MenuItemModel[] {
-    return (Object.keys(menuMap) ?? []).reduce((result: MenuItemModel[], menuMapItem) => {
-      if (menuMapItem === 'metadata') {
+    return (Object.keys(menuMap) ?? [])
+      .reduce((result: MenuItemModel[], menuMapItem) => {
+        if (menuMapItem === 'metadata') {
+          return result;
+        }
+
+        const currentPath: string = join(path, menuMapItem);
+        const fileAttributes = this.getAttributes(currentPath);
+        if (!fileAttributes?.published) {
+          return result;
+        }
+
+        const menuItem: MenuItemModel = {
+          id: currentPath,
+          name: fileAttributes?.displayName ?? '',
+        };
+
+        const items: MenuItemModel[] = this.getMenuItems(menuMap[menuMapItem], currentPath);
+        if (items.length > 0) {
+          menuItem.items = items;
+        } else {
+          menuItem.link = currentPath
+        }
+        if (menuItem) {
+          result.push(menuItem);
+        }
         return result;
-      }
-
-      const currentPath: string = join(path, menuMapItem);
-      const fileAttributes = this.getAttributes(currentPath);
-      if (!fileAttributes?.published) {
-        return result;
-      }
-
-      const menuItem: MenuItemModel = {
-        id: currentPath,
-        name: fileAttributes?.displayName ?? '',
-      };
-
-      const items: MenuItemModel[] = this.getMenuItems(menuMap[menuMapItem], currentPath);
-      if (items.length > 0) {
-        menuItem.items = items;
-      } else {
-        menuItem.link = currentPath
-      }
-      if (menuItem) {
-        result.push(menuItem);
-      }
-      return result;
-    }, []);
+      }, [])
+      .sort((left, right) => {
+        const leftOrder = this.getAttributes(left.id)?.order ?? 10000;
+        const rightOrder = this.getAttributes(right.id)?.order ?? 10000;
+        return leftOrder - rightOrder;
+      });
   }
 
   private getAttributes(currentPath: string): ContentAttributesModel {
