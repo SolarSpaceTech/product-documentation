@@ -1,8 +1,13 @@
-import {ChangeDetectionStrategy, Component, DestroyRef, OnInit} from '@angular/core';
-import {map, tap} from "rxjs";
-import {ActivatedRoute, UrlSegment} from "@angular/router";
-import { MenuStateService } from "../../../../core/modules/menu/services";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  OnInit,
+} from '@angular/core';
+import { map, tap } from 'rxjs';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { MenuStateService } from '../../../../core/modules/menu/services';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-documentation-content',
@@ -21,14 +26,25 @@ export class DocumentationContentComponent implements OnInit {
     private readonly destroyRef: DestroyRef,
   ) {}
 
+  private currentLangPath = toSignal(
+    this.activatedRoute.pathFromRoot.at(1).url,
+  )().at(0).path;
+
   public ngOnInit(): void {
-    this.activatedRoute.url.pipe(
-      map((segments: UrlSegment[]) => [
-        'documentation',
-        ...segments.map((segment) => segment.path),
-      ]),
-      tap((path: string[]) => this.menuStateService.initMenuState(path)),
-      takeUntilDestroyed(this.destroyRef),
-    ).subscribe();
+    this.activatedRoute.url
+      .pipe(
+        map((segments: UrlSegment[]) => {
+          return [
+            this.currentLangPath,
+            'documentation',
+            ...segments.map((segment) => segment.path),
+          ];
+        }),
+        tap((path: string[]) => {
+          this.menuStateService.initMenuState(path);
+        }),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe();
   }
 }

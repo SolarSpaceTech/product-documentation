@@ -1,6 +1,12 @@
+:host {
+  position: sticky;
+  top: 0;
+}
+
 .header {
   height: 72px;
-  background: #2b323a;
+  background: var(--sc-sys-color-surface-container);
+  box-shadow: 0px 4px 30px 0px rgba(28, 32, 36, 0.25);
   padding: 0.75rem 2.5rem;
   display: flex;
   align-items: center;
