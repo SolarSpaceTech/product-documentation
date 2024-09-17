@@ -28,9 +28,7 @@ export const getMenuEndpoint = async (req: any, res: any) => {
     }))
   );
 
-  const contentPublicItems = contentItems.filter((contentItem) => contentItem.attributes?.published);
-
-  const fileContentMap = (contentPublicItems ?? []).reduce((contentItemMap: Map<string, ContentItemModel>, { path, attributes, content }) => {
+  const fileContentMap = (contentItems ?? []).reduce((contentItemMap: Map<string, ContentItemModel>, { path, attributes, content }) => {
     return contentItemMap.set(path, {
       attributes: attributes,
       content: content,

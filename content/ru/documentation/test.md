@@ -2,6 +2,7 @@
 title: test
 displayName: Тестовая страница
 published: true
+order: 3
 ---
 # Сервер лицензирования
 

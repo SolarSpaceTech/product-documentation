@@ -1,4 +1,4 @@
-import { ContentItemModel, MenuItemModel } from "../../../../models";
+import { ContentAttributesModel, ContentItemModel, MenuItemModel } from "../../../../models";
 import { MenuMapRecordModel } from "../../../../app/core/modules/menu/models";
 import { join } from "node:path";
 
@@ -35,7 +35,7 @@ export class FileMenuList {
       } else {
         currentId = pathPart;
       }
-      const currentMenuItem = result.items!.find((item) => item.id === currentId);
+      const currentMenuItem = result.items?.find((item) => item.id === currentId);
       if (currentMenuItem) {
         result = currentMenuItem
       }
@@ -58,30 +58,38 @@ export class FileMenuList {
   }
 
   private getMenuItems(menuMap: MenuMapRecordModel, path: string = ''): MenuItemModel[] {
-    return Object.keys(menuMap)
-      .filter((menuMapItem: string) => menuMapItem !== 'metadata')
-      .map((menuMapItem: string) => {
-        const currentPath: string = join(path, menuMapItem);
+    return (Object.keys(menuMap) ?? []).reduce((result: MenuItemModel[], menuMapItem) => {
+      if (menuMapItem === 'metadata') {
+        return result;
+      }
 
-        const menuItem: MenuItemModel = {
-          id: currentPath,
-          name: this.mapItemName(currentPath),
-        };
+      const currentPath: string = join(path, menuMapItem);
+      const fileAttributes = this.getAttributes(currentPath);
+      if (!fileAttributes?.published) {
+        return result;
+      }
 
-        const items: MenuItemModel[] = this.getMenuItems(menuMap[menuMapItem], currentPath);
+      const menuItem: MenuItemModel = {
+        id: currentPath,
+        name: fileAttributes?.displayName ?? '',
+      };
 
-        if (items.length > 0) {
-          menuItem.items = items;
-        } else {
-          menuItem.link = currentPath
-        }
-        return menuItem;
-      });
+      const items: MenuItemModel[] = this.getMenuItems(menuMap[menuMapItem], currentPath);
+      if (items.length > 0) {
+        menuItem.items = items;
+      } else {
+        menuItem.link = currentPath
+      }
+      if (menuItem) {
+        result.push(menuItem);
+      }
+      return result;
+    }, []);
   }
 
-  private mapItemName(currentPath: string): string {
-    return this.fileContentMap.get(`${this.parentDirPath}/${currentPath}.md`)?.attributes?.displayName
-    ?? this.fileContentMap.get(`${this.parentDirPath}/${currentPath}/metadata.md`)?.attributes?.displayName
-    ?? '';
+  private getAttributes(currentPath: string): ContentAttributesModel {
+    return this.fileContentMap.get(`${this.parentDirPath}/${currentPath}.md`)?.attributes
+      ?? this.fileContentMap.get(`${this.parentDirPath}/${currentPath}/metadata.md`)?.attributes
+      ?? {};
   }
 }
