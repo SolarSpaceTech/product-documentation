@@ -1,26 +1,25 @@
 <ul class="menu__list">
   @for (menuItem of menu(); track menuItem.id) {
   <li class="menu__item">
-    @let displayingSubmenuSet = displayingSubmenuSet$ | async;
-    @if (displayingSubmenuSet) {
+    @if (displayingSubmenuSet()) {
       @if (menuItem.link) {
-        <a class="menu__link" [class.menu__link_active]="displayingSubmenuSet.has(menuItem.id)" [href]="'/' + menuItem.link">
-          <div class="menu__link-dot"></div>
+        <a class="menu__link" [href]="'/' + menuItem.link">
+          <div class="menu__link-dot" [class.menu__link-dot--active]="displayingSubmenuSet().has(menuItem.id)" ></div>
           <span>
           {{ menuItem.name }}</span>
         </a>
       } @else {
         <button
         class="menu__submenu-toggle"
-        [class.menu__submenu-toggle_open]="displayingSubmenuSet.has(menuItem.id)"
+        [class.menu__submenu-toggle_open]="displayingSubmenuSet().has(menuItem.id)"
         (click)="toggleBlockDisplay(menuItem.id)"
         >
-          <sc-icon icon="caret-down" [rotate180]="displayingSubmenuSet.has(menuItem.id)"></sc-icon>
+          <sc-icon icon="caret-down" [rotate180]="displayingSubmenuSet().has(menuItem.id)"></sc-icon>
           {{ menuItem.name }}
         </button>
         <app-menu
           class="menu__submenu"
-          [class.menu__submenu_open]="displayingSubmenuSet.has(menuItem.id)"
+          [class.menu__submenu_open]="displayingSubmenuSet().has(menuItem.id)"
           [menu]="menuItem.items"
         ></app-menu>
       }

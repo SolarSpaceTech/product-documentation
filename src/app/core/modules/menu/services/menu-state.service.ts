@@ -1,13 +1,11 @@
-import { Injectable } from "@angular/core";
-import {BehaviorSubject, Observable} from "rxjs";
+import { Injectable, signal, computed } from '@angular/core';
 
 @Injectable()
 export class MenuStateService {
-  private displayingSubmenuSetBehaviorSubject = new BehaviorSubject(new Set<string>());
-  public displayingSubmenuSet$: Observable<Set<string>> = this.displayingSubmenuSetBehaviorSubject.asObservable();
+  public displayingSubmenuSet = signal(new Set<string>());
 
   public initMenuState(urlPaths: string[]): void {
-    const displayingSubmenuSet: Set<string> = new Set(this.displayingSubmenuSetBehaviorSubject.getValue());
+    const displayingSubmenuSet = new Set(this.displayingSubmenuSet());
 
     urlPaths.reduce((id: string, urlPath: string) => {
       let currentId = urlPath;
@@ -18,16 +16,17 @@ export class MenuStateService {
       return currentId;
     }, '');
 
-    this.displayingSubmenuSetBehaviorSubject.next(displayingSubmenuSet);
+    this.displayingSubmenuSet.set(displayingSubmenuSet);
   }
 
   public toggleMenuBlockItem(id: string): void {
-    const displayingSubmenuSet: Set<string> = new Set(this.displayingSubmenuSetBehaviorSubject.getValue());
+    const displayingSubmenuSet = new Set(this.displayingSubmenuSet());
+
     if (displayingSubmenuSet.has(id)) {
       displayingSubmenuSet.delete(id);
     } else {
       displayingSubmenuSet.add(id);
     }
-    this.displayingSubmenuSetBehaviorSubject.next(displayingSubmenuSet);
+    this.displayingSubmenuSet.set(displayingSubmenuSet);
   }
 }

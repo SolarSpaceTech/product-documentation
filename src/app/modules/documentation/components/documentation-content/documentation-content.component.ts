@@ -7,7 +7,7 @@ import {
 import { map, tap } from 'rxjs';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { MenuStateService } from '../../../../core/modules/menu/services';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-documentation-content',
@@ -26,15 +26,22 @@ export class DocumentationContentComponent implements OnInit {
     private readonly destroyRef: DestroyRef,
   ) {}
 
+  private currentLangPath = toSignal(
+    this.activatedRoute.pathFromRoot.at(1).url,
+  )().at(0).path;
+
   public ngOnInit(): void {
     this.activatedRoute.url
       .pipe(
-        map((segments: UrlSegment[]) => [
-          'documentation',
-          ...segments.map((segment) => segment.path),
-        ]),
+        map((segments: UrlSegment[]) => {
+          return [
+            this.currentLangPath,
+            'documentation',
+            ...segments.map((segment) => segment.path),
+          ];
+        }),
         tap((path: string[]) => {
-          console.log('init', path);
+          console.log(path, 'path');
 
           this.menuStateService.initMenuState(path);
         }),

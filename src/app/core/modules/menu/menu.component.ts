@@ -5,6 +5,7 @@ import {
   effect,
   input,
   Input,
+  Signal,
 } from '@angular/core';
 import { MenuItemModel } from '../../../../models';
 import { Observable } from 'rxjs';
@@ -17,8 +18,12 @@ import { MenuStateService } from './services';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
-  public displayingSubmenuSet$: Observable<Set<string>> =
-    this.menuStateService.displayingSubmenuSet$;
+  public displayingSubmenuSet: Signal<Set<string>> =
+    this.menuStateService.displayingSubmenuSet;
+
+  public displayingSubmenuSetDEBUG: any = computed(() => ({
+    ...this.menuStateService.displayingSubmenuSet()
+  }));
 
   public menu = input<MenuItemModel[]>([]);
 

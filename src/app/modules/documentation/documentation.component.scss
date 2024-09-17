@@ -18,7 +18,7 @@
 }
 
 .documentation__content {
-  height: 100%;
+  height: calc(100vh - 72px);
   padding: 0 1.25rem;
   background: var(--sc-sys-color-surface-container);
 }

@@ -31,10 +31,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
-    &_active {
-      color: #f58a5c;
-    }
   }
 
   &__link-dot {
@@ -43,6 +39,10 @@
     height: 0.25rem;
     background: var(--sc-sys-color-on-primary);
     border-radius: 4px;
+
+    &--active {
+      background: var(--sc-sys-color-primary-on-surface);;
+    }
   }
 
   &__submenu-toggle {
