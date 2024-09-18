@@ -2,7 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule} from '@angular/core';
 import { DocumentationComponent } from "./documentation.component";
 import { DocumentationContentComponent } from "./components";
-import { documentationResolver, documentationMenuResolver } from "./resolvers";
+import { documentationResolver, documentationBreadcrumbsResolver, documentationMenuResolver } from "./resolvers";
 
 const routes: Routes = [
   {
@@ -10,6 +10,7 @@ const routes: Routes = [
     component: DocumentationComponent,
     resolve: {
       menu: documentationMenuResolver,
+      breadcrumbs: documentationBreadcrumbsResolver,
     },
     children: [
       {
