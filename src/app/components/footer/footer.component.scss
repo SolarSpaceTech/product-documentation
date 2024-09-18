@@ -5,7 +5,7 @@
   align-items: center;
   flex-direction: row;
   padding: 24px 40px;
-  background-color: #2b323a;
+  background-color: var(--sc-sys-color-on-secondary);
 
   &__menu {
     display: flex;
@@ -15,7 +15,7 @@
     gap: 32px;
 
     &-item {
-      color: #ffffff;
+      color: var(--sc-sys-color-on-primary);
       font-family: "ONY_One_Beta", sans-serif;
       font-size: 16px;
       font-weight: 400;
@@ -24,7 +24,7 @@
   }
 
   &__copyright {
-    color: #9ba3ab;
+    color: var(--sc-sys-color-on-surface-variant);
     font-size: 12px;
     font-family: "ONY_One_Beta", sans-serif;
   }
