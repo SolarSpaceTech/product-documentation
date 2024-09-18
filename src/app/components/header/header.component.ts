@@ -12,8 +12,6 @@ import { SCCheckboxModule } from '@ui-kit/checkbox/checkbox.module';
 import { SCSelectModule } from '@ui-kit/select/select.module';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LanguageFormControlComponent } from '../form-controls/language/language-form-control.component';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
