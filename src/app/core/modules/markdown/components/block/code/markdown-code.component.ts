@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IconComponent } from 'app/components/icon';
 import { Tokens } from 'marked';
+import { SCIconModule } from '@ui-kit/icon/icon.module';
 
 @Component({
   selector: 'app-markdown-code',
@@ -8,7 +8,7 @@ import { Tokens } from 'marked';
   styleUrl: './markdown-code.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [IconComponent]
+  imports: [SCIconModule]
 })
 export class MarkdownCodeComponent {
   @Input()
