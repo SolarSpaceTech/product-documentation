@@ -11,6 +11,10 @@
     }
   }
 
+  &__home {
+    color: var(--sc-sys-color-primary);
+  }
+
   &__item-decoration {
     color: var(--sc-sys-color-on-surface-variant);
     transform: rotate(-90deg);
