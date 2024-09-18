@@ -2,6 +2,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   Inject,
   PLATFORM_ID,
 } from '@angular/core';
@@ -12,6 +13,9 @@ import { SCCheckboxModule } from '@ui-kit/checkbox/checkbox.module';
 import { SCSelectModule } from '@ui-kit/select/select.module';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LanguageFormControlComponent } from '../form-controls/language/language-form-control.component';
+import { Theme, ThemesService } from 'app/services/themes';
+import { distinctUntilChanged } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-header',
@@ -34,9 +38,14 @@ import { LanguageFormControlComponent } from '../form-controls/language/language
   host: { ngSkipHydration: 'true' },
 })
 export class HeaderComponent {
-  constructor(@Inject(PLATFORM_ID) private platformId: string) {}
   protected themeControl = new FormControl<boolean>(true);
   protected languageControl = new FormControl('en');
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: string,
+    private themesService: ThemesService,
+    private destroyRef: DestroyRef,
+  ) {}
 
   get isBrowserOnly(): boolean {
     return isPlatformBrowser(this.platformId);
@@ -45,6 +54,18 @@ export class HeaderComponent {
   public ngOnInit(): void {
     if (this.isBrowserOnly) {
       this.languageControl.setValue(window.location.pathname.split('/')[1]);
+
+      this.themeControl.valueChanges
+        .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+        .subscribe((isDarkTheme) => {
+          this.themesService.setTheme(isDarkTheme ? Theme.DARK : Theme.LIGHT);
+        });
+
+      this.themesService.currentTheme$
+        .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+        .subscribe((currentTheme) => {
+          this.themeControl.patchValue(currentTheme === Theme.DARK);
+        });
     }
   }
 }

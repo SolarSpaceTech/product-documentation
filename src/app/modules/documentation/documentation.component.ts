@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { map, Observable, tap } from "rxjs";
-import { MenuItemModel } from "../../../models";
+import { ActivatedRoute } from '@angular/router';
+import { map, Observable } from 'rxjs';
+import { MenuItemModel } from '../../../models';
 
 @Component({
   selector: 'app-documentation',
