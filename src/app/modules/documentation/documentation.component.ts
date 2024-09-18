@@ -19,7 +19,6 @@ export class DocumentationComponent {
   );
 
   public breadcrumbs$: Observable<string[]> = this.activatedRoute.data.pipe(
-    tap((breadcrumbs) => console.log('breadcrumbs', breadcrumbs)),
     map(({ breadcrumbs }) => breadcrumbs?.items),
   );
 
