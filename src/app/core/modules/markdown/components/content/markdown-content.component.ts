@@ -3,14 +3,13 @@ import { Token } from 'marked';
 import { NgFor, NgIf } from '@angular/common';
 import { MarkdownCanCreatePipe } from '../../pipes';
 import { MarkdownParserPipe } from '../../pipes/markdown-parser.pipe';
-import { MarkdownCreatorDirective } from '../../diretives';
 
 @Component({
   selector: 'app-markdown-content',
   templateUrl: './markdown-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, NgFor, MarkdownCanCreatePipe, MarkdownParserPipe, MarkdownCreatorDirective],
+  imports: [NgIf, NgFor, MarkdownCanCreatePipe, MarkdownParserPipe],
   encapsulation: ViewEncapsulation.None,
 })
 export class MarkdownContentComponent {
