@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { MarkdownTokenModel } from 'markdown/models';
 import { BlockquoteTypeEnum, MarkdownInlineEnum } from 'markdown/enums';
-import { IconComponent } from 'app/components/icon';
 import { MarkdownContentDirective } from 'markdown/diretives';
+import { SCIconModule } from '@ui-kit/icon/icon.module';
 
 @Component({
   selector: 'blockquote.markdown-blockquote',
@@ -17,7 +17,7 @@ import { MarkdownContentDirective } from 'markdown/diretives';
   styleUrls: ['./markdown-blockquote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, NgSwitch, NgSwitchCase, IconComponent, MarkdownContentDirective],
+  imports: [NgIf, NgSwitch, NgSwitchCase, MarkdownContentDirective, SCIconModule],
   encapsulation: ViewEncapsulation.None,
 })
 export class MarkdownBlockquoteComponent {
