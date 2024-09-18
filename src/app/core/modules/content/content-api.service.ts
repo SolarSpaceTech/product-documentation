@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { ContentItemModel, MenuItemModel } from "../../../../models";
+import { BreadcrumbsModel, ContentItemModel, MenuItemModel } from "../../../../models";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable()
@@ -19,5 +19,9 @@ export class ContentApiService {
 
   public getDirectory(path: string): Observable<ContentItemModel[]> {
     return this.httpClient.get<ContentItemModel[]>(`${this.HOST}/directory/${path}`)
+  }
+
+  public getBreadcrumbs(path: string): Observable<BreadcrumbsModel> {
+    return this.httpClient.get<BreadcrumbsModel>(`${this.HOST}/breadcrumbs/${path}`)
   }
 }
