@@ -1,4 +1,5 @@
 :host {
+  z-index: 100;
   position: sticky;
   top: 0;
 }
@@ -17,6 +18,10 @@
   }
 
   &__actions {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
     sc-checkbox {
       pointer-events: none;
     }
