@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { AsyncPipe } from "@angular/common";
 import { MarkdownComponent } from "./markdown.component";
-import { MarkdownComponentCreatorService, MarkdownRendererService, MarkdownTransformerService } from "./services";
+import { MarkdownRendererService, MarkdownTransformerService } from "./services";
 import { MarkdownContentDirective } from 'markdown/diretives/markdown-content.directive';
 import { MarkdownHtmlElementBuilderService } from 'markdown/services/renderer/markdown-html-element-builder.service';
 import { MarkdownOtherElementBuilderService } from 'markdown/services/renderer/markdown-other-element-builder.service';
@@ -16,7 +16,6 @@ import { MarkdownComponentBuilderService } from 'markdown/services/renderer/mark
     MarkdownComponent,
   ],
   providers: [
-    MarkdownComponentCreatorService,
     MarkdownTransformerService,
     MarkdownComponentBuilderService,
     MarkdownHtmlElementBuilderService,
