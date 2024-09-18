@@ -59,11 +59,9 @@
 
 .markdown-code__button {
   padding: 0.25rem;
+}
 
-  color: var(--sc-sys-color-on-surface);
-  background: var(--sc-sys-color-basic);
-  border: none;
-  border-radius: .25rem;
-
-  font-weight: 700;
+.markdown-code__icon {
+  margin-top: 0;
+  top: 0;
 }

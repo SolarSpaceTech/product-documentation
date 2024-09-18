@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { Params, RouterLink } from '@angular/router';
 import { DecodeUriComponentPipe } from 'app/pipes';
-import { IconComponent } from 'app/components/icon';
 import { MarkdownTokenModel } from 'markdown/models';
 import { Token } from 'marked';
 import { MarkdownContentDirective } from 'markdown/diretives';
@@ -20,7 +19,7 @@ import { MarkdownContentDirective } from 'markdown/diretives';
   styleUrls: ['./markdown-link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, RouterLink, NgTemplateOutlet, IconComponent, DecodeUriComponentPipe, MarkdownContentDirective],
+  imports: [NgIf, RouterLink, NgTemplateOutlet, DecodeUriComponentPipe, MarkdownContentDirective],
 })
 export class MarkdownLinkComponent implements OnChanges {
   @Input()

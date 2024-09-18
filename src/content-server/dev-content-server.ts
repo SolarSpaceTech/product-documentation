@@ -4,11 +4,14 @@ import { getContentEndpoint } from "./endpoints/get/content/get-content.endpoint
 import { deleteStopServerEndpoint } from "./endpoints/delete/delete-stop-server.endpoint";
 import { getMenuEndpoint } from "./endpoints/get/menu/get-menu.endpoint";
 import { getDirectoryEndpoint } from './endpoints/get/directory/get-directory.endpoint';
+import { getBreadcrumbsEndpoint } from './endpoints/get/breadcrumbs/get-breadcrumbs.endpoint';
 
 export function app(): express.Express {
   const server = express();
 
   server.use(cors());
+
+  server.get('/api/breadcrumbs/*', getBreadcrumbsEndpoint);
 
   server.get('/api/menu/*', getMenuEndpoint);
 

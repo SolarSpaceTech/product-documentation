@@ -5,7 +5,7 @@
 
   position: relative;
   display: flex;
-  padding: 0.75rem;
+  padding: 1rem 0.75rem 0.75rem 0.75rem;
   border-radius: 0.25rem;
   background: var(--markdown-blockquote-background);
   color: var(--sc-sys-color-on-info);
@@ -49,5 +49,17 @@
   h4:last-child,
   p:last-child {
     margin-bottom: 0;
+  }
+
+  sc-icon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: -0.25rem;
+    top: 0;
+
+    & svg {
+      max-width: inherit;
+    }
   }
 }

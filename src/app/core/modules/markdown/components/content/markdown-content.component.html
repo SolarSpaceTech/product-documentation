@@ -1,9 +1,0 @@
-@for (token of tokens; track token) {
-  @if (token.type | markdownCanCreate) {
-    <ng-template [markdownCreator]="token"></ng-template>
-  } @else if (token.type === 'text') {
-    <div [outerHTML]="[token] | markdownParser : true"></div>
-  } @else {
-    <div [outerHTML]="[token] | markdownParser"></div>
-  }
-}

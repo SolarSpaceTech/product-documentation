@@ -42,4 +42,9 @@
     );
     @include sc-scrollbar;
   }
+
+  &__breadcrumbs {
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+  }
 }
