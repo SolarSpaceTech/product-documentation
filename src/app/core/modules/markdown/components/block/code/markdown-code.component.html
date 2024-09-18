@@ -1,6 +1,6 @@
 <code class="markdown-code__code">{{token.text}}</code>
 <div class="markdown-code__button-wrapper">
-  <sc-button class="markdown-code__button" small>
+  <sc-button class="markdown-code__button" small (click)="copyToClipboard(token.text)">
     <sc-icon class="markdown-code__icon" icon="copy"></sc-icon>
   </sc-button>
 </div>
