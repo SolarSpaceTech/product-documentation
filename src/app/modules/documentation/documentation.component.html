@@ -5,7 +5,10 @@
 </section>
 
 <section class="documentation__content">
-  <app-breadcrumbs withHome [items]="breadcrumbs$ | async"></app-breadcrumbs>
+  <app-breadcrumbs
+    class="documentation__breadcrumbs"
+    withHome [items]="breadcrumbs$ | async"
+  ></app-breadcrumbs>
   <router-outlet></router-outlet>
 </section>
 <nav class="documentation__toc">

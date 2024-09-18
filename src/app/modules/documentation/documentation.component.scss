@@ -23,6 +23,11 @@
   background: var(--sc-sys-color-surface-container);
 }
 
+.documentation__breadcrumbs {
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+}
+
 .documentation__nav {
   position: sticky;
   top: 6rem;
