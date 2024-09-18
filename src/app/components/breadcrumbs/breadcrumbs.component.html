@@ -1,0 +1,17 @@
+<ul class="breadcrumbs">
+  @if (hasHome) {
+    <li class="breadcrumbs__item">
+      <sc-icon icon="home"></sc-icon>
+      <sc-icon class="breadcrumbs__item-decoration" icon="chevron-down" size="xs"></sc-icon>
+    </li>
+  }
+
+  @for (item of items; track item; let last = $last) {
+    <li
+      class="breadcrumbs__item"
+      [class.breadcrumbs__item_active]="last"
+    >
+      {{ item }}<sc-icon *ngIf="!last" class="breadcrumbs__item-decoration" icon="chevron-down" size="xs"></sc-icon>
+    </li>
+  }
+</ul>

@@ -1,0 +1,20 @@
+.breadcrumbs {
+  list-style: none;
+  padding: 0;
+
+  &__item {
+    display: inline-block;
+    color: var(--sc-sys-color-on-surface-variant);
+
+    &:last-of-type {
+      color: var(--sc-sys-color-on-surface);
+    }
+  }
+
+  &__item-decoration {
+    color: var(--sc-sys-color-on-surface-variant);
+    transform: rotate(-90deg);
+  }
+}
+
+
