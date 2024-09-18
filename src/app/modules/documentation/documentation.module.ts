@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from "@angular/router";
 import { DocumentationComponent } from './documentation.component';
 import { DocumentationRoutingModule } from "./documentation.routing.module";
-import { MenuModule } from "../../core/modules/menu";
-import { MarkdownModule } from "../../core/modules/markdown/markdown.module";
+import { MenuModule } from "app/core/modules/menu";
+import { MarkdownModule } from "app/core/modules/markdown/markdown.module";
 import { DocumentationContentComponent } from "./components";
+import { BreadcrumbsComponent } from 'app/components/breadcrumbs/breadcrumbs.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { DocumentationContentComponent } from "./components";
     MarkdownModule,
     RouterOutlet,
     MenuModule,
+    BreadcrumbsComponent,
   ],
 })
 export class DocumentationModule { }

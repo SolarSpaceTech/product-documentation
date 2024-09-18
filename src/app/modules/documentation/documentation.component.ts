@@ -18,5 +18,10 @@ export class DocumentationComponent {
     map(({ menu }) => menu[0].items),
   );
 
+  public breadcrumbs$: Observable<string[]> = this.activatedRoute.data.pipe(
+    tap((breadcrumbs) => console.log('breadcrumbs', breadcrumbs)),
+    map(({ breadcrumbs }) => breadcrumbs?.items),
+  );
+
   constructor(private readonly activatedRoute: ActivatedRoute) {}
 }

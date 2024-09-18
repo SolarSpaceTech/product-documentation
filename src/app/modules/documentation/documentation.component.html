@@ -3,7 +3,9 @@
     <app-menu [menu]="menu$ | async"></app-menu>
   </nav>
 </section>
+
 <section class="documentation__content">
+  <app-breadcrumbs withHome [items]="breadcrumbs$ | async"></app-breadcrumbs>
   <router-outlet></router-outlet>
 </section>
 <nav class="documentation__toc">
