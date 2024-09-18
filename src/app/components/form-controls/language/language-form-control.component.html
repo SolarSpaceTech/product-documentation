@@ -1,0 +1,29 @@
+<ng-container *ngIf="currentLanguage()">
+  <sc-dropdown [offsetY]="8" [maxHeight]="maxHeight" [trigger]="'manual'" [manualOptionsCloseOnClickOutside]="true"
+    [width]="176" #dropdown>
+    <sc-decorator-padding></sc-decorator-padding>
+    <sc-dropdown-button class="language-form-controller__button" (click)="dropdown.toggle()">
+      <div class="language-form-controller__language-icon-wrapper">
+        <img class="language-form-controller__language-icon" [src]="currentLanguage() | languageImage" />
+      </div>
+      <span class="language-form-controller__current-option-label">{{ currentLanguage() }}</span>
+      <sc-icon icon="caret-down" [rotate180]="dropdown.isOpen"></sc-icon>
+    </sc-dropdown-button>
+
+    <sc-dropdown-overlay>
+      <div class="scrollable-wrapper">
+        <div class="options-wrapper">
+          <sc-option *ngFor="let language of Language | objectValues" [value]="language" (click)="select(language)">
+            <div class="language-form-controller__option">
+              <div class="language-form-controller__language-icon-wrapper">
+                <img class="language-form-controller__language-icon" [src]="language | languageImage" />
+              </div>
+              <span class="language-form-controller__option-label">{{ language.toUpperCase() }}</span>
+              <sc-icon *ngIf="currentLanguage() === language" icon="check"></sc-icon>
+            </div>
+          </sc-option>
+        </div>
+      </div>
+    </sc-dropdown-overlay>
+  </sc-dropdown>
+</ng-container>

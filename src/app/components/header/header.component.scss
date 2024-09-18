@@ -1,25 +1,28 @@
 :host {
-  position: sticky;
+  z-index: 100;
+  position: fixed;
   top: 0;
+  width: 100%;
 }
 
 .header {
-  height: 72px;
+  height: var(--header-height);
   background: var(--sc-sys-color-surface-container);
   box-shadow: 0px 4px 30px 0px rgba(28, 32, 36, 0.25);
   padding: 0.75rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* @TODO: функциональный хедер */
-  pointer-events: none;
 
   &__search {
     width: 22rem;
   }
 
   &__actions {
-    /* @TODO: функциональный хедер */
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
     sc-checkbox {
       pointer-events: none;
     }
@@ -28,9 +31,9 @@
   &__navigation {
     display: flex;
     gap: 2rem;
-    color: white;
 
     &-element {
+      color: var(--sc-sys-color-on-primary);
       font-size: 16px;
       line-height: 24px;
       font-weight: 400;

@@ -15,7 +15,10 @@ body {
   font-size: 0.875rem;
   color: var(--sc-sys-color-on-surface);
   background-color: var(--sc-sys-color-surface);
-  height: auto;
+  height: 100%;
+
+  --header-height: 72px;
+  --footer-height: 72px;
 }
 
 * {

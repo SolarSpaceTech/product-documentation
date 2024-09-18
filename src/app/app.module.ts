@@ -1,24 +1,30 @@
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from "@angular/common/http";
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withFetch,
+} from '@angular/common/http';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RequestWaiterInterceptor } from "./interceptors";
+import { RequestWaiterInterceptor } from './interceptors';
 import { LanguageComponent } from './components/language/language.component';
 import { ContentModule } from './core/modules/content';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LanguageComponent,
-  ],
+  declarations: [AppComponent, LanguageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ContentModule,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),
@@ -29,6 +35,6 @@ import { HeaderComponent } from './components/header/header.component';
     },
     provideClientHydration(),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

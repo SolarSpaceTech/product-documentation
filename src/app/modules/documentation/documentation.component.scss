@@ -1,35 +1,50 @@
+@import "mixins";
+
 :host {
   display: grid;
   grid-template-columns: 18.75rem 1fr 18.75rem;
+  margin-bottom: 40px;
+  padding-top: var(--header-height);
 }
 
-.documentation__menu {
-  overflow: visible;
-  padding-top: 1.5rem;
-  flex-shrink: 0;
-  height: 100%;
-  color: var(--sc-sys-color-on-primary);
-}
+.documentation {
+  &__menu {
+    overflow: visible;
+    flex-shrink: 0;
+    color: var(--sc-sys-color-on-primary);
+  }
 
-.documentation__title {
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-}
+  &__title {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
 
-.documentation__content {
-  height: 100%;
-  padding: 0 1.25rem;
-  background: var(--sc-sys-color-surface-container);
-}
+  &__content {
+    height: 100%;
+    min-height: calc(
+      100vh - var(--header-height) - var(--footer-height) - 40px
+    );
+    padding: 1.25rem;
+    background: var(--sc-sys-color-surface-container);
+  }
 
-.documentation__breadcrumbs {
-  margin-top: 1.25rem;
-  margin-bottom: 1rem;
-}
+  &__nav {
+    width: 300px;
+    position: fixed;
+    top: var(--header-height);
+    padding-top: 1.5rem;
+    display: block;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: calc(
+      100vh - var(--header-height) - var(--footer-height) - 40px
+    );
+    @include sc-scrollbar;
+  }
 
-.documentation__nav {
-  position: sticky;
-  top: 6rem;
-  overflow: visible;
+  &__breadcrumbs {
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+  }
 }
