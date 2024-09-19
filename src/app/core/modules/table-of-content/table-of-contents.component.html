@@ -1,0 +1,7 @@
+table of contents
+<ul>
+  @for (item of table$ | async; track item.fragment) {
+    <li><a [routerLink]="[]" [fragment]="item.fragment">{{ item.title }}</a></li>
+  }
+</ul>
+
