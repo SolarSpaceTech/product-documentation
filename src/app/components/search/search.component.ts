@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Dialog, DialogModule, DIALOG_DATA } from '@angular/cdk/dialog';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
+import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 import { SCInputModule } from '@ui-kit/input/input.module';
 import { SCDecoratorsModule } from '@ui-kit/decorators/decorators.module';
 import { SCIconModule } from '@ui-kit/icon/icon.module';

@@ -13,7 +13,7 @@ import { LanguageFormControlComponent } from '../form-controls/language/language
 import { Theme, ThemesService } from 'app/services/themes';
 import { distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { SearchComponent } from '../search/search/search.component';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-header',
