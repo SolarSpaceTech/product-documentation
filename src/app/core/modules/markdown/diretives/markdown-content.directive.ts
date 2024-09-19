@@ -1,6 +1,6 @@
 import {
   Directive,
-  ElementRef,
+  ElementRef, inject,
   Injector,
   Input,
   OnInit,
@@ -15,16 +15,14 @@ import { MarkdownRendererService } from 'markdown/services';
   standalone: true,
 })
 export class MarkdownContentDirective implements OnInit {
+  private readonly elementRef: ElementRef = inject(ElementRef);
+  private readonly renderer: Renderer2 = inject(Renderer2);
+  private readonly injector: Injector = inject(Injector);
+  private readonly viewContainerRef: ViewContainerRef = inject(ViewContainerRef);
+  private readonly markdownRendererService: MarkdownRendererService = inject(MarkdownRendererService);
+
   @Input('markdownContent')
   public tokens: Token[] = [];
-
-  constructor(
-    private readonly elementRef: ElementRef,
-    private readonly renderer: Renderer2,
-    private readonly injector: Injector,
-    private readonly viewContainerRef: ViewContainerRef,
-    private readonly markdownRendererService: MarkdownRendererService,
-  ) {}
 
   public ngOnInit(): void {
     this.markdownRendererService.render({
