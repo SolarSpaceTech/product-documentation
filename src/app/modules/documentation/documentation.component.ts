@@ -22,5 +22,12 @@ export class DocumentationComponent {
     map(({ breadcrumbs }) => breadcrumbs?.items),
   );
 
+  public searchIndexes$ = this.activatedRoute.data.pipe(
+    map(({ searchIndexes }) => {
+      console.log(searchIndexes);
+
+      return searchIndexes;
+    }),
+  );
   constructor(private readonly activatedRoute: ActivatedRoute) {}
 }

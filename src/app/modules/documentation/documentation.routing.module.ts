@@ -1,8 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule} from '@angular/core';
-import { DocumentationComponent } from "./documentation.component";
-import { DocumentationContentComponent } from "./components";
-import { documentationResolver, documentationBreadcrumbsResolver, documentationMenuResolver } from "./resolvers";
+import { NgModule } from '@angular/core';
+import { DocumentationComponent } from './documentation.component';
+import { DocumentationContentComponent } from './components';
+import {
+  documentationResolver,
+  documentationBreadcrumbsResolver,
+  documentationMenuResolver,
+} from './resolvers';
+import { documentationSearchIndexesResolver } from './resolvers/documentation-search-indexes.resolver';
 
 const routes: Routes = [
   {
@@ -11,6 +16,7 @@ const routes: Routes = [
     resolve: {
       menu: documentationMenuResolver,
       breadcrumbs: documentationBreadcrumbsResolver,
+      searchIndexes: documentationSearchIndexesResolver,
     },
     children: [
       {
@@ -18,8 +24,8 @@ const routes: Routes = [
         component: DocumentationContentComponent,
         resolve: {
           document: documentationResolver,
-        }
-      }
+        },
+      },
     ],
   },
 ];

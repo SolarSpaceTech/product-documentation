@@ -1,10 +1,11 @@
 import express from 'express';
 import cors from 'cors';
-import { getContentEndpoint } from "./endpoints/get/content/get-content.endpoint";
-import { deleteStopServerEndpoint } from "./endpoints/delete/delete-stop-server.endpoint";
-import { getMenuEndpoint } from "./endpoints/get/menu/get-menu.endpoint";
+import { getContentEndpoint } from './endpoints/get/content/get-content.endpoint';
+import { deleteStopServerEndpoint } from './endpoints/delete/delete-stop-server.endpoint';
+import { getMenuEndpoint } from './endpoints/get/menu/get-menu.endpoint';
 import { getDirectoryEndpoint } from './endpoints/get/directory/get-directory.endpoint';
 import { getBreadcrumbsEndpoint } from './endpoints/get/breadcrumbs/get-breadcrumbs.endpoint';
+import { getSearchIndexesEndpoint } from './endpoints/get/search-indexes/get-search-indexes';
 
 export function app(): express.Express {
   const server = express();
@@ -18,6 +19,8 @@ export function app(): express.Express {
   server.get('/api/directory/*', getDirectoryEndpoint);
 
   server.get('/api/content/*', getContentEndpoint);
+
+  server.get('/api/search-indexes/*', getSearchIndexesEndpoint);
 
   server.delete('/api/stop-server', deleteStopServerEndpoint);
 
