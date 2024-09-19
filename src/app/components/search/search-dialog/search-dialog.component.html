@@ -1,0 +1,15 @@
+<div class="search-dialog">
+  <sc-input class="search-dialog__input" autocomplete="off" [formControl]="searchControl" [label]="'Search'"
+    [prefixSeparatorHidden]="true" [suffixSeparatorHidden]="true">
+    <sc-decorator-prefix>
+      <sc-icon icon="search"></sc-icon>
+    </sc-decorator-prefix>
+    <sc-decorator-suffix *ngIf="searchControl.value">
+      <sc-icon icon="close" (click)="resetSearch()"></sc-icon>
+    </sc-decorator-suffix>
+  </sc-input>
+
+  <div class="search-dialog__results">
+    <app-search-result></app-search-result>
+  </div>
+</div>

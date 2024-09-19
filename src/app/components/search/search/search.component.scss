@@ -1,0 +1,6 @@
+.search {
+  cursor: pointer;
+  &__input {
+    pointer-events: none;
+  }
+}

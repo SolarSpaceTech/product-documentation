@@ -6,9 +6,6 @@ import {
   Inject,
   PLATFORM_ID,
 } from '@angular/core';
-import { SCInputModule } from '@ui-kit/input/input.module';
-import { SCDecoratorsModule } from '@ui-kit/decorators/decorators.module';
-import { SCIconModule } from '@ui-kit/icon/icon.module';
 import { SCCheckboxModule } from '@ui-kit/checkbox/checkbox.module';
 import { SCSelectModule } from '@ui-kit/select/select.module';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,21 +13,19 @@ import { LanguageFormControlComponent } from '../form-controls/language/language
 import { Theme, ThemesService } from 'app/services/themes';
 import { distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { SearchComponent } from '../search/search/search.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     CommonModule,
-    SCInputModule,
-    SCDecoratorsModule,
-    SCInputModule,
-    SCIconModule,
     SCCheckboxModule,
     SCSelectModule,
     ReactiveFormsModule,
     LanguageFormControlComponent,
     FormsModule,
+    SearchComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  background: var(--sc-sys-color-surface-container);
+  border-radius: 4px;
+  padding: 16px;
+  max-width: 52.5rem;
+
+  .search-dialog {
+    &__input {
+      margin-bottom: 0.625rem;
+    }
+    &__results {
+      background: var(--sc-sys-color-surface-container-highest);
+      border-radius: 4px;
+    }
+  }
+}
