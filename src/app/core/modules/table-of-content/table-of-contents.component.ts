@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, IsActiveMatchOptions, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Observable, tap } from 'rxjs';

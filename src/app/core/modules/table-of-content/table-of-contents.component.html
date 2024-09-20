@@ -7,6 +7,8 @@
       <li class="table-of-contents__item">
         <a
           class="table-of-contents__link"
+          [routerLink]="[]"
+          [fragment]="item.fragment"
           [class.table-of-contents__link_active]="params.currentItem === item.fragment"
           [attr.data-level]="item.level"
           (click)="scrollTo(item)"
