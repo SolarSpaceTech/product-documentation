@@ -2,7 +2,7 @@
 
 :host {
   display: grid;
-  grid-template-columns: 18.75rem 1fr 18.75rem;
+  grid-template-columns: 18.75rem auto 18.75rem;
   margin-bottom: 40px;
   padding-top: var(--header-height);
 }
@@ -46,5 +46,21 @@
   &__breadcrumbs {
     margin-top: 1.25rem;
     margin-bottom: 1rem;
+  }
+
+  &__toc {
+    width: 300px;
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    display: block;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: calc(
+      100vh - var(--header-height) - var(--footer-height) - 40px
+    );
+    @include sc-scrollbar;
   }
 }

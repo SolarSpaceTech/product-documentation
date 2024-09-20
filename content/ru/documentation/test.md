@@ -12,7 +12,7 @@ documentation, it can be a separate application or an existing one.
 When you install NgDoc, it will be integrated into the build process of your application, and will generate
 and components based on you code, that can be used in your application to display documentation.
 
-## Описание задачи
+## [Описание задачи](task-description)
 
 [Аутентификация](https://confluence.solarsecurity.ru/plugins/servlet/applinks/oauth/login-dance/authorize?applicationLinkID=7e840fef-85d9-37ac-a117-2ba7c03aac37) для
 просмотра подробных данных проблемы
@@ -22,12 +22,12 @@ and components based on you code, that can be used in your application to displa
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Vivamus imperdiet leo velit, nec consectetur metus auctor at. 
 
-### Требования к подсистеме
+### [Требования к подсистеме](subsystem-requirements)
 Примечание:
 - Приоритет задаётся цветом: высокий - красный, средний - желтый, низкий - зеленый
 - Статус: new, rejected, implemented
 
-### Требования реализации
+### [Требования реализации](implementation-requirements)
 Прошедшее демо:
 - Install keyauth server
 - генерировали лицензию средствами KeyAuth через GUI
@@ -132,8 +132,8 @@ export enum MarkdownOtherEnum {
 
 ![image](https://placehold.co/800x360 "Some text")
 
-## HLD
-### Архитектура приложения
+## [HLD](hld)
+### [Архитектура приложения](application-architecture)
 Прошедшее демо:
 - Install keyauth server
 - генерировали лицензию средствами KeyAuth через GUI
@@ -142,12 +142,12 @@ export enum MarkdownOtherEnum {
     - при этом на стороне клиента генерировался HWID
     - сервер  keyauth привязывал лицензию к HWID клиента
 
-### Описание клиентской части
+### [Описание клиентской части](frontent-description)
 Настроенный сервер KeyAuth практически без изменений:
 - Создано приложение botshield на сервере
 - Преднастроены лицензионные ключи
 
-### Описание серверной части
+### [Описание серверной части](backend-description)
 First of all you need to add builders from NgDoc library to your application, replace `application` and
 `dev-server` builders for `build` and `serve` targets with alternatives from the NgDoc as shown in the
 example below
