@@ -7,6 +7,7 @@ import { MenuModule } from "app/core/modules/menu";
 import { MarkdownModule } from "app/core/modules/markdown/markdown.module";
 import { DocumentationContentComponent } from "./components";
 import { BreadcrumbsComponent } from 'app/components/breadcrumbs/breadcrumbs.component';
+import { TableOfContentsComponent } from 'app/core/modules/table-of-content/table-of-contents.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { BreadcrumbsComponent } from 'app/components/breadcrumbs/breadcrumbs.com
     RouterOutlet,
     MenuModule,
     BreadcrumbsComponent,
+    TableOfContentsComponent,
   ],
 })
 export class DocumentationModule { }
