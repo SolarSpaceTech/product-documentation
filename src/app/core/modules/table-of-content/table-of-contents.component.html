@@ -1,7 +1,18 @@
-table of contents
-<ul>
-  @for (item of table$ | async; track item.fragment) {
-    <li><a [routerLink]="[]" [fragment]="item.fragment">{{ item.title }}</a></li>
-  }
-</ul>
+<ng-container *ngIf="{
+  table: table$ | async,
+  currentItem: currentItem$ | async
+} as params">
+  <ul class="table-of-contents">
+    @for (item of params.table; track item.fragment) {
+      <li class="table-of-contents__item">
+        <a
+          class="table-of-contents__link"
+          [class.table-of-contents__link_active]="params.currentItem === item.fragment"
+          [attr.data-level]="item.level"
+          (click)="scrollTo(item)"
+        >{{ item.title }}</a>
+      </li>
+    }
+  </ul>
+</ng-container>
 
