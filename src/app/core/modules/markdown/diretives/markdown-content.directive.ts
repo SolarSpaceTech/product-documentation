@@ -15,11 +15,11 @@ import { MarkdownRendererService } from 'markdown/services';
   standalone: true,
 })
 export class MarkdownContentDirective implements OnInit {
-  private readonly elementRef: ElementRef = inject(ElementRef);
-  private readonly renderer: Renderer2 = inject(Renderer2);
-  private readonly injector: Injector = inject(Injector);
-  private readonly viewContainerRef: ViewContainerRef = inject(ViewContainerRef);
-  private readonly markdownRendererService: MarkdownRendererService = inject(MarkdownRendererService);
+  protected readonly elementRef: ElementRef = inject(ElementRef);
+  protected readonly renderer: Renderer2 = inject(Renderer2);
+  protected readonly injector: Injector = inject(Injector);
+  protected readonly viewContainerRef: ViewContainerRef = inject(ViewContainerRef);
+  protected readonly markdownRendererService: MarkdownRendererService = inject(MarkdownRendererService);
 
   @Input('markdownContent')
   public tokens: Token[] = [];

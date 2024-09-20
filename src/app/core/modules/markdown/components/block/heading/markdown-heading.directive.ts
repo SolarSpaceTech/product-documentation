@@ -1,5 +1,6 @@
 import {
   Directive,
+  ElementRef,
   HostBinding,
   inject,
   Input,
@@ -11,11 +12,13 @@ import { TableOfContentsService } from 'app/core/modules/table-of-content/table-
 
 @Directive()
 export class MarkdownHeadingDirective extends MarkdownContentDirective {
-  private readonly tableOfContentService: TableOfContentsService = inject(TableOfContentsService);
+  protected readonly elementRef = inject(ElementRef);
+  private readonly tableOfContentService = inject(TableOfContentsService);
+
 
   @Input()
   public set token(value: Tokens.Heading) {
-    this.tableOfContentService.addItem(value);
+    this.tableOfContentService.addItem(value, this.elementRef);
     const linkToken = value.tokens.find(({ type }) => type === MarkdownInlineEnum.Link) as Tokens.Link;
     if (!!linkToken) {
       this.id = linkToken.href;
