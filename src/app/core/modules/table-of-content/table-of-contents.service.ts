@@ -94,7 +94,7 @@ export class TableOfContentsService {
         })
       },
       {
-        rootMargin: '-20% 0% -70% 0%',
+        rootMargin: '-10% 0% -80% 0%',
         threshold: 0,
       }
     );
