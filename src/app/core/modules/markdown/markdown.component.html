@@ -1,1 +1,4 @@
-<div [markdownContent]="tokens$ | async"></div>
+@let tokens = tokens$ | async;
+@if (tokens?.length) {
+  <div [markdownContent]="tokens"></div>
+}
