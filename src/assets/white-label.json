@@ -1,0 +1,14 @@
+{
+  "name": "Example",
+  "domain": "https://example-domain.ru",
+  "company": {
+    "name": "company example",
+    "domain": "https://company-example-domain.ru"
+  },
+  "deep": {
+    "company": {
+      "name": "deep company example",
+      "domain": "https://deep-company-example-domain.ru"
+    }
+  }
+}
