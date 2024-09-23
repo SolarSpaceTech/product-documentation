@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run serve:dev-content & ng serve",
+    "start": "npm run dev & ng serve",
     "build": "npm run serve:dev-content & npm run init-routes && ng build && npm run stop:dev-content",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
