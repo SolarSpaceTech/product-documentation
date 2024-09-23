@@ -32,7 +32,7 @@
   border-radius: 0.25em;
 
   @include sc-text-code;
-
+  @include sc-scrollbar;
 }
 
 .markdown-code__code {
