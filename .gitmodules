@@ -1,3 +1,6 @@
 [submodule "ui-kit"]
 	path = ui-kit
 	url = git@git.p.rtsl.onl:frontend/ui-kit.git
+[submodule "content"]
+	path = content
+	url = git@github.com:SolarSpaceTech/product-documentation-content.git

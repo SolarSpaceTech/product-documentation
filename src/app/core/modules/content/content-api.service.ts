@@ -24,4 +24,9 @@ export class ContentApiService {
   public getBreadcrumbs(path: string): Observable<BreadcrumbsModel> {
     return this.httpClient.get<BreadcrumbsModel>(`${this.HOST}/breadcrumbs/${path}`)
   }
+
+  public getSearchIndexes(lang: string): Observable<BreadcrumbsModel> {
+    // @TODO: model
+    return this.httpClient.get<any>(`${this.HOST}/search-indexes/${lang}`)
+  }
 }
