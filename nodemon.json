@@ -1,0 +1,5 @@
+{
+  "watch": ["src/content-server"],
+  "ext": "ts",
+  "exec": "ts-node -P tsconfig.backend.json ./src/content-server/dev-content-server.ts"
+}
