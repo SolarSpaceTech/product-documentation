@@ -16,7 +16,7 @@ const routes: Routes = [
     resolve: {
       menu: documentationMenuResolver,
       breadcrumbs: documentationBreadcrumbsResolver,
-      searchIndexes: documentationSearchIndexesResolver,
+      // searchIndexes: documentationSearchIndexesResolver,
     },
     children: [
       {
